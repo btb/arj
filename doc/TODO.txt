@@ -1,0 +1,605 @@
+Showstoppers for 3.10.23:
+
+- Win32: directory entries are always archived
+- Win32: bombs on tempfile creation in read-only dirs unless -hm9999999 is specified
+- amd64 BUGBUG: registration key check fails with 'CRC error'
+- Perpetuating "#"'s during the testing phase in "arj a test -i5 -jt1".
+- MSVC integration hints + tips from Dec'2005 [see e-mail archives]
+- DOS16: "arj a -je -hg!" depletes near memory; "-je -hg" produces an
+  unextractable archive (yuck!)
+- Passwords are currently being asked for WITHOUT BEING HIDDEN!
+- Selected items from tracker
+- Discrepancy between #ifdef linux and #ifdef __linux__ ... whichever is correct?
+- Can't rename /media/floppy/ARJTEMP.$00 to /media/floppy/impact.arj << BECAUSE IT SITS THERE IN LOWERCASE ALREADY!
+- How will "-e1" operate now that have_path_shortcuts logic has been implemented
+  and target_dir is out for add_commands?
+  - Check "arj a -e1 directory/path/ file1.x file2.y file3.z"
+  - Compare with pre-2007 ARJes.
+  This is a serious issue because we've already lost PACKAGER to it.
+
+Warnings about gmtime/localtime on FreeBSD 8 (need to use time_t * in arjtypes.c instead of long pointers)
+================================================================
+building arj-3.10.22_2 in directory /space/8.0-i386-garga
+build started at Mon Jan 18 12:18:58 UTC 2010
+port directory: /usr/ports/archivers/arj
+building for:  8.0-PRERELEASE i386
+maintained by: garga@FreeBSD.org
+Makefile ident: $FreeBSD: ports/archivers/arj/Makefile,v 1.28 2010/01/05 11:48:17 garga Exp $
+prefixes: LOCALBASE=usr/local X11BASE=usr/local PREFIX=/usr/local
+Begin Configuration:
+---Begin Environment---
+ARCH=i386
+PACKAGE_BUILDING=1
+USER=root
+CCACHE_DIR=
+BRANCH=PRERELEASE
+CCACHE_NOLINK=1
+HOST_WORKDIR=
+X11BASE=/usr/local
+BATCH=1
+OLDPWD=/
+HOME=/root
+SRCBASE=/space/jails/8.0-i386/src
+PKGZIPCMD=bzip2
+HAVE_MOTIF=1
+FTP_TIMEOUT=900
+HTTP_TIMEOUT=900
+defaultUpdateHost=cvsup2.us.freebsd.org
+pb=/space
+DISTFILE_CACHE=localhost:/space/distfiles
+OSREL=8.0
+defaultUpdateType=CSUP
+TINDERD_LOGFILE=/dev/null
+PORTOBJFORMAT=elf
+WRKDIRPREFIX=/work
+DISTDIR=/tmp/distfiles
+DISTCACHE=/distcache
+CCACHE_LOGFILE=
+PATH=/sbin:/bin:/usr/sbin:/usr/bin:/usr/local/sbin:/usr/local/bin:/usr/local/bin
+PACKAGES=/tmp/packages
+TIMEOUT=7200
+PKGSUFFIX=.tbz
+OSVERSION=800107
+OPTIONS_ENABLED=0
+__DSVERSION__=3.2
+TINDERD_SLEEPTIME=120
+UNAME_n=tinderbox.host
+__MKLVL__=1
+CCACHE_JAIL=0
+LOCALBASE=/usr/local
+CCACHE_MAX_SIZE=1G
+DISTFILE_URI=
+X_WINDOW_SYSTEM=xorg
+MASTER_SITE_OVERRIDE=file:///distcache/${DIST_SUBDIR}/ 
+OPTIONS_DIR=
+UNAME_r=8.0-PRERELEASE
+USA_RESIDENT=YES
+UNAME_s=FreeBSD
+PARALLEL_PACKAGE_BUILD=1
+PWD=/usr/ports/archivers/arj
+UNAME_v=FreeBSD 8.0-PRERELEASE #0: Mon Jan 18 07:18:40 EST 2010    root@tinderbox.host:/usr/src/sys/magic/kernel/path
+FTP_PASSIVE_MODE=yes
+CCACHE_ENABLED=0
+INDEXFILE=INDEX-8
+---End Environment---
+
+---Begin OPTIONS List---
+---End OPTIONS List---
+
+End Configuration.
+FETCH_DEPENDS=
+PATCH_DEPENDS=
+EXTRACT_DEPENDS=
+BUILD_DEPENDS=gettext-0.17_1.tbz libiconv-1.13.1.tbz gmake-3.81_3.tbz m4-1.4.13,1.tbz autoconf-wrapper-20071109.tbz perl-5.8.9_3.tbz autoconf-2.62.tbz
+RUN_DEPENDS=
+add_pkg
+================================================================
+====================<phase 1: make checksum>====================
+=> arj-3.10.22.tar.gz doesn't seem to exist in /tmp/distfiles/.
+=> Attempting to fetch from file:///distcache//.
+fetch: file:///distcache//arj-3.10.22.tar.gz: No such file or directory
+=> Attempting to fetch from http://heanet.dl.sourceforge.net/project/arj/arj/2.78_3.10%20build%2022/.
+arj-3.10.22.tar.gz                                     421 kB  348 kBps
+=> MD5 Checksum OK for arj-3.10.22.tar.gz.
+=> SHA256 Checksum OK for arj-3.10.22.tar.gz.
+================================================================
+====================<phase 2: make extract>====================
+add_pkg
+===>  Extracting for arj-3.10.22_2
+=> MD5 Checksum OK for arj-3.10.22.tar.gz.
+=> SHA256 Checksum OK for arj-3.10.22.tar.gz.
+================================================================
+====================<phase 3: make patch>====================
+add_pkg
+===>  Patching for arj-3.10.22_2
+===>  Applying FreeBSD patches for arj-3.10.22_2
+================================================================
+====================<phase 4: make build>====================
+add_pkg gettext-0.17_1.tbz libiconv-1.13.1.tbz gmake-3.81_3.tbz m4-1.4.13,1.tbz autoconf-wrapper-20071109.tbz perl-5.8.9_3.tbz autoconf-2.62.tbz
+adding dependencies
+pkg_add gettext-0.17_1.tbz
+pkg_add libiconv-1.13.1.tbz
+skipping libiconv-1.13.1, already added
+pkg_add gmake-3.81_3.tbz
+pkg_add m4-1.4.13,1.tbz
+pkg_add autoconf-wrapper-20071109.tbz
+pkg_add perl-5.8.9_3.tbz
+Removing stale symlinks from /usr/bin...
+    Skipping /usr/bin/perl
+    Skipping /usr/bin/perl5
+Done.
+Creating various symlinks in /usr/bin...
+    Symlinking /usr/local/bin/perl5.8.9 to /usr/bin/perl
+    Symlinking /usr/local/bin/perl5.8.9 to /usr/bin/perl5
+Done.
+Cleaning up /etc/make.conf... Done.
+Spamming /etc/make.conf... Done.
+Cleaning up /etc/manpath.config... Done.
+Spamming /etc/manpath.config... Done.
+pkg_add autoconf-2.62.tbz
+===>   arj-3.10.22_2 depends on executable: gmake - found
+===>   arj-3.10.22_2 depends on file: /usr/local/bin/autoconf-2.62 - found
+===>  Configuring for arj-3.10.22_2
+checking for a BSD-compatible install... /usr/bin/install -c -o root -g wheel
+checking build system type... i386-portbld-freebsd8.0
+checking host system type... i386-portbld-freebsd8.0
+checking for gcc... cc
+checking for C compiler default output file name... a.out
+checking whether the C compiler works... yes
+checking whether we are cross compiling... no
+checking for suffix of executables... 
+checking for suffix of object files... o
+checking whether we are using the GNU C compiler... yes
+checking whether cc accepts -g... yes
+checking for cc option to accept ISO C89... none needed
+checking how to run the C preprocessor... cc -E
+checking for grep that handles long lines and -e... /usr/bin/grep
+checking for egrep... /usr/bin/grep -E
+checking for ANSI C header files... yes
+checking for sys/types.h... yes
+checking for sys/stat.h... yes
+checking for stdlib.h... yes
+checking for string.h... yes
+checking for memory.h... yes
+checking for strings.h... yes
+checking for inttypes.h... yes
+checking for stdint.h... yes
+checking for unistd.h... yes
+checking fcntl.h usability... yes
+checking fcntl.h presence... yes
+checking for fcntl.h... yes
+checking limits.h usability... yes
+checking limits.h presence... yes
+checking for limits.h... yes
+checking malloc.h usability... no
+checking malloc.h presence... no
+checking for malloc.h... no
+checking for an ANSI C-conforming const... yes
+checking whether struct tm is in sys/time.h or time.h... time.h
+checking whether byte ordering is bigendian... no
+checking whether cc needs -traditional... no
+checking for working memcmp... yes
+checking return type of signal handlers... void
+checking for vprintf... yes
+checking for _doprnt... no
+checking for getcwd... yes
+checking for min... no
+checking for max... no
+checking for mkdir... yes
+checking for mkdtemp... yes
+checking for rmdir... yes
+checking for fcloseall... yes
+checking for strcasecmp... yes
+checking for setpriority... yes
+checking for strdup... yes
+checking for strerror... yes
+checking for strstr... yes
+checking for strupr... no
+checking for strlwr... no
+checking for strtol... yes
+checking for strtoul... yes
+checking if dynamic C library may be used... yes
+checking if SFX executables may be packed... yes
+checking what to use as a dedicated output directory... freebsd8.0
+checking fnmatch() tolerance to incomplete patterns acting as filenames... yes
+checking if color output is demanded... no
+configure: creating ./config.status
+config.status: creating ../GNUmakefile
+config.status: WARNING:  'makefile.in' seems to ignore the --datarootdir setting
+config.status: creating ../c_defs.h
+===>  Building for arj-3.10.22_2
+mkdir -p ./freebsd8.0/en/rs
+mkdir -p ./freebsd8.0/en/rs/tools
+mkdir -p ./freebsd8.0/en/rs/arjcrypt
+mkdir -p ./freebsd8.0/en/rs/sfxstub
+mkdir -p ./freebsd8.0/en/rs/arjsfxv
+mkdir -p ./freebsd8.0/en/rs/arjsfx
+mkdir -p ./freebsd8.0/en/rs/arjsfxjr
+mkdir -p ./freebsd8.0/en/rs/arj
+mkdir -p ./freebsd8.0/en/rs/rearj
+mkdir -p ./freebsd8.0/en/rs/register
+mkdir -p ./freebsd8.0/en/rs/arjdisp
+mkdir -p ./freebsd8.0/en/rs
+mkdir -p ./freebsd8.0/en/rs/tools
+mkdir -p ./freebsd8.0/en/rs/arjcrypt
+mkdir -p ./freebsd8.0/en/rs/sfxstub
+mkdir -p ./freebsd8.0/en/rs/arjsfxv
+mkdir -p ./freebsd8.0/en/rs/arjsfx
+mkdir -p ./freebsd8.0/en/rs/arjsfxjr
+mkdir -p ./freebsd8.0/en/rs/arj
+mkdir -p ./freebsd8.0/en/rs/rearj
+mkdir -p ./freebsd8.0/en/rs/register
+mkdir -p ./freebsd8.0/en/rs/arjdisp
+cc -DARJUTIL -c -Ifreebsd8.0 -I./freebsd8.0/en/rs -I. -O2 -pipe -fPIC -fno-strict-aliasing -DLOCALE=LANG_en -DLOCALE_DESC="\"en\"" -DPKGLIBDIR="\"/usr/local/lib/arj\"" -D_UNIX -O2 -pipe -fPIC -fno-strict-aliasing -ofreebsd8.0/en/rs/tools/filemode.o filemode.c
+cc -DARJUTIL -c -Ifreebsd8.0 -I./freebsd8.0/en/rs -I. -O2 -pipe -fPIC -fno-strict-aliasing -DLOCALE=LANG_en -DLOCALE_DESC="\"en\"" -DPKGLIBDIR="\"/usr/local/lib/arj\"" -D_UNIX -O2 -pipe -fPIC -fno-strict-aliasing -ofreebsd8.0/en/rs/tools/today.o today.c
+cc -DLOCALE=LANG_en -DLOCALE_DESC="\"en\"" -DPKGLIBDIR="\"/usr/local/lib/arj\"" -D_UNIX -O2 -pipe -fPIC -fno-strict-aliasing -s gnu/stripgcc.lnk -o freebsd8.0/en/rs/tools/today ./freebsd8.0/en/rs/tools/filemode.o ./freebsd8.0/en/rs/tools/today.o 
+./freebsd8.0/en/rs/tools/today en ./freebsd8.0/en/rs
+TODAY v 1.22  [29/10/2000]  Not a part of any binary package!
+
+gmake do-all
+gmake[1]: Entering directory `/work/a/ports/archivers/arj/work/arj-3.10.22'
+cc -DSFL=4 -c -Ifreebsd8.0 -I./freebsd8.0/en/rs -I. -O2 -pipe -fPIC -fno-strict-aliasing -DLOCALE=LANG_en -DLOCALE_DESC="\"en\"" -DPKGLIBDIR="\"/usr/local/lib/arj\"" -D_UNIX -O2 -pipe -fPIC -fno-strict-aliasing -ofreebsd8.0/en/rs/arj/filemode.o filemode.c
+./freebsd8.0/en/rs/tools/today en ./freebsd8.0/en/rs
+TODAY v 1.22  [29/10/2000]  Not a part of any binary package!
+
+cc -c -Ifreebsd8.0 -I./freebsd8.0/en/rs -I. -O2 -pipe -fPIC -fno-strict-aliasing -DLOCALE=LANG_en -DLOCALE_DESC="\"en\"" -DPKGLIBDIR="\"/usr/local/lib/arj\"" -D_UNIX -O2 -pipe -fPIC -fno-strict-aliasing -ofreebsd8.0/en/rs/arj/date_sig.o freebsd8.0/en/rs/date_sig.c
+cc -DARJUTIL -c -Ifreebsd8.0 -I./freebsd8.0/en/rs -I. -O2 -pipe -fPIC -fno-strict-aliasing -DLOCALE=LANG_en -DLOCALE_DESC="\"en\"" -DPKGLIBDIR="\"/usr/local/lib/arj\"" -D_UNIX -O2 -pipe -fPIC -fno-strict-aliasing -ofreebsd8.0/en/rs/tools/msgbind.o msgbind.c
+cc -DARJUTIL -c -Ifreebsd8.0 -I./freebsd8.0/en/rs -I. -O2 -pipe -fPIC -fno-strict-aliasing -DLOCALE=LANG_en -DLOCALE_DESC="\"en\"" -DPKGLIBDIR="\"/usr/local/lib/arj\"" -D_UNIX -O2 -pipe -fPIC -fno-strict-aliasing -ofreebsd8.0/en/rs/tools/arjdata.o arjdata.c
+cc -DARJUTIL -c -Ifreebsd8.0 -I./freebsd8.0/en/rs -I. -O2 -pipe -fPIC -fno-strict-aliasing -DLOCALE=LANG_en -DLOCALE_DESC="\"en\"" -DPKGLIBDIR="\"/usr/local/lib/arj\"" -D_UNIX -O2 -pipe -fPIC -fno-strict-aliasing -ofreebsd8.0/en/rs/tools/crc32.o crc32.c
+cc -DLOCALE=LANG_en -DLOCALE_DESC="\"en\"" -DPKGLIBDIR="\"/usr/local/lib/arj\"" -D_UNIX -O2 -pipe -fPIC -fno-strict-aliasing -s gnu/stripgcc.lnk -o freebsd8.0/en/rs/tools/msgbind ./freebsd8.0/en/rs/tools/filemode.o ./freebsd8.0/en/rs/tools/msgbind.o ./freebsd8.0/en/rs/tools/arjdata.o ./freebsd8.0/en/rs/tools/crc32.o 
+./freebsd8.0/en/rs/tools/msgbind ./resource/resource.txt msg_arj UNIX s en ./freebsd8.0/en/rs
+MSGBIND v 1.65  [14/12/2002]  Not a part of any binary package!
+
+cc -c -Ifreebsd8.0 -I./freebsd8.0/en/rs -I. -O2 -pipe -fPIC -fno-strict-aliasing -DLOCALE=LANG_en -DLOCALE_DESC="\"en\"" -DPKGLIBDIR="\"/usr/local/lib/arj\"" -D_UNIX -O2 -pipe -fPIC -fno-strict-aliasing -ofreebsd8.0/en/rs/arj/fmsg_arj.o freebsd8.0/en/rs/fmsg_arj.c
+cc -c -Ifreebsd8.0 -I./freebsd8.0/en/rs -I. -O2 -pipe -fPIC -fno-strict-aliasing -DLOCALE=LANG_en -DLOCALE_DESC="\"en\"" -DPKGLIBDIR="\"/usr/local/lib/arj\"" -D_UNIX -O2 -pipe -fPIC -fno-strict-aliasing -ofreebsd8.0/en/rs/arj/imsg_arj.o freebsd8.0/en/rs/imsg_arj.c
+cc -c -Ifreebsd8.0 -I./freebsd8.0/en/rs -I. -O2 -pipe -fPIC -fno-strict-aliasing -DLOCALE=LANG_en -DLOCALE_DESC="\"en\"" -DPKGLIBDIR="\"/usr/local/lib/arj\"" -D_UNIX -O2 -pipe -fPIC -fno-strict-aliasing -ofreebsd8.0/en/rs/arj/nmsg_arj.o freebsd8.0/en/rs/nmsg_arj.c
+cc -DSFL=4 -c -Ifreebsd8.0 -I./freebsd8.0/en/rs -I. -O2 -pipe -fPIC -fno-strict-aliasing -DLOCALE=LANG_en -DLOCALE_DESC="\"en\"" -DPKGLIBDIR="\"/usr/local/lib/arj\"" -D_UNIX -O2 -pipe -fPIC -fno-strict-aliasing -ofreebsd8.0/en/rs/arj/integr.o integr.c
+cc -DSFL=4 -c -Ifreebsd8.0 -I./freebsd8.0/en/rs -I. -O2 -pipe -fPIC -fno-strict-aliasing -DLOCALE=LANG_en -DLOCALE_DESC="\"en\"" -DPKGLIBDIR="\"/usr/local/lib/arj\"" -D_UNIX -O2 -pipe -fPIC -fno-strict-aliasing -ofreebsd8.0/en/rs/arj/file_reg.o file_reg.c
+cc -DSFL=4 -c -Ifreebsd8.0 -I./freebsd8.0/en/rs -I. -O2 -pipe -fPIC -fno-strict-aliasing -DLOCALE=LANG_en -DLOCALE_DESC="\"en\"" -DPKGLIBDIR="\"/usr/local/lib/arj\"" -D_UNIX -O2 -pipe -fPIC -fno-strict-aliasing -ofreebsd8.0/en/rs/arj/decode.o decode.c
+cc -DSFL=4 -c -Ifreebsd8.0 -I./freebsd8.0/en/rs -I. -O2 -pipe -fPIC -fno-strict-aliasing -DLOCALE=LANG_en -DLOCALE_DESC="\"en\"" -DPKGLIBDIR="\"/usr/local/lib/arj\"" -D_UNIX -O2 -pipe -fPIC -fno-strict-aliasing -ofreebsd8.0/en/rs/arj/encode.o encode.c
+cc -DSFL=4 -c -Ifreebsd8.0 -I./freebsd8.0/en/rs -I. -O2 -pipe -fPIC -fno-strict-aliasing -DLOCALE=LANG_en -DLOCALE_DESC="\"en\"" -DPKGLIBDIR="\"/usr/local/lib/arj\"" -D_UNIX -O2 -pipe -fPIC -fno-strict-aliasing -ofreebsd8.0/en/rs/arj/arj.o arj.c
+cc -DSFL=4 -c -Ifreebsd8.0 -I./freebsd8.0/en/rs -I. -O2 -pipe -fPIC -fno-strict-aliasing -DLOCALE=LANG_en -DLOCALE_DESC="\"en\"" -DPKGLIBDIR="\"/usr/local/lib/arj\"" -D_UNIX -O2 -pipe -fPIC -fno-strict-aliasing -ofreebsd8.0/en/rs/arj/enc_gwy.o enc_gwy.c
+cc -DSFL=4 -c -Ifreebsd8.0 -I./freebsd8.0/en/rs -I. -O2 -pipe -fPIC -fno-strict-aliasing -DLOCALE=LANG_en -DLOCALE_DESC="\"en\"" -DPKGLIBDIR="\"/usr/local/lib/arj\"" -D_UNIX -O2 -pipe -fPIC -fno-strict-aliasing -ofreebsd8.0/en/rs/arj/fardata.o fardata.c
+cc -DSFL=4 -c -Ifreebsd8.0 -I./freebsd8.0/en/rs -I. -O2 -pipe -fPIC -fno-strict-aliasing -DLOCALE=LANG_en -DLOCALE_DESC="\"en\"" -DPKGLIBDIR="\"/usr/local/lib/arj\"" -D_UNIX -O2 -pipe -fPIC -fno-strict-aliasing -ofreebsd8.0/en/rs/arj/arj_user.o arj_user.c
+cc -DSFL=4 -c -Ifreebsd8.0 -I./freebsd8.0/en/rs -I. -O2 -pipe -fPIC -fno-strict-aliasing -DLOCALE=LANG_en -DLOCALE_DESC="\"en\"" -DPKGLIBDIR="\"/usr/local/lib/arj\"" -D_UNIX -O2 -pipe -fPIC -fno-strict-aliasing -ofreebsd8.0/en/rs/arj/arj_arcv.o arj_arcv.c
+cc -DSFL=4 -c -Ifreebsd8.0 -I./freebsd8.0/en/rs -I. -O2 -pipe -fPIC -fno-strict-aliasing -DLOCALE=LANG_en -DLOCALE_DESC="\"en\"" -DPKGLIBDIR="\"/usr/local/lib/arj\"" -D_UNIX -O2 -pipe -fPIC -fno-strict-aliasing -ofreebsd8.0/en/rs/arj/arj_file.o arj_file.c
+cc -DSFL=4 -c -Ifreebsd8.0 -I./freebsd8.0/en/rs -I. -O2 -pipe -fPIC -fno-strict-aliasing -DLOCALE=LANG_en -DLOCALE_DESC="\"en\"" -DPKGLIBDIR="\"/usr/local/lib/arj\"" -D_UNIX -O2 -pipe -fPIC -fno-strict-aliasing -ofreebsd8.0/en/rs/arj/crc32.o crc32.c
+cc -DSFL=4 -c -Ifreebsd8.0 -I./freebsd8.0/en/rs -I. -O2 -pipe -fPIC -fno-strict-aliasing -DLOCALE=LANG_en -DLOCALE_DESC="\"en\"" -DPKGLIBDIR="\"/usr/local/lib/arj\"" -D_UNIX -O2 -pipe -fPIC -fno-strict-aliasing -ofreebsd8.0/en/rs/arj/misc.o misc.c
+cc -DSFL=4 -c -Ifreebsd8.0 -I./freebsd8.0/en/rs -I. -O2 -pipe -fPIC -fno-strict-aliasing -DLOCALE=LANG_en -DLOCALE_DESC="\"en\"" -DPKGLIBDIR="\"/usr/local/lib/arj\"" -D_UNIX -O2 -pipe -fPIC -fno-strict-aliasing -ofreebsd8.0/en/rs/arj/debug.o debug.c
+cc -DSFL=4 -c -Ifreebsd8.0 -I./freebsd8.0/en/rs -I. -O2 -pipe -fPIC -fno-strict-aliasing -DLOCALE=LANG_en -DLOCALE_DESC="\"en\"" -DPKGLIBDIR="\"/usr/local/lib/arj\"" -D_UNIX -O2 -pipe -fPIC -fno-strict-aliasing -ofreebsd8.0/en/rs/arj/arj_proc.o arj_proc.c
+cc -DSFL=4 -c -Ifreebsd8.0 -I./freebsd8.0/en/rs -I. -O2 -pipe -fPIC -fno-strict-aliasing -DLOCALE=LANG_en -DLOCALE_DESC="\"en\"" -DPKGLIBDIR="\"/usr/local/lib/arj\"" -D_UNIX -O2 -pipe -fPIC -fno-strict-aliasing -ofreebsd8.0/en/rs/arj/environ.o environ.c
+cc -DSFL=4 -c -Ifreebsd8.0 -I./freebsd8.0/en/rs -I. -O2 -pipe -fPIC -fno-strict-aliasing -DLOCALE=LANG_en -DLOCALE_DESC="\"en\"" -DPKGLIBDIR="\"/usr/local/lib/arj\"" -D_UNIX -O2 -pipe -fPIC -fno-strict-aliasing -ofreebsd8.0/en/rs/arj/ea_mgr.o ea_mgr.c
+cc -DSFL=4 -c -Ifreebsd8.0 -I./freebsd8.0/en/rs -I. -O2 -pipe -fPIC -fno-strict-aliasing -DLOCALE=LANG_en -DLOCALE_DESC="\"en\"" -DPKGLIBDIR="\"/usr/local/lib/arj\"" -D_UNIX -O2 -pipe -fPIC -fno-strict-aliasing -ofreebsd8.0/en/rs/arj/uxspec.o uxspec.c
+cc -DSFL=4 -c -Ifreebsd8.0 -I./freebsd8.0/en/rs -I. -O2 -pipe -fPIC -fno-strict-aliasing -DLOCALE=LANG_en -DLOCALE_DESC="\"en\"" -DPKGLIBDIR="\"/usr/local/lib/arj\"" -D_UNIX -O2 -pipe -fPIC -fno-strict-aliasing -ofreebsd8.0/en/rs/arj/ext_hdr.o ext_hdr.c
+cc -DSFL=4 -c -Ifreebsd8.0 -I./freebsd8.0/en/rs -I. -O2 -pipe -fPIC -fno-strict-aliasing -DLOCALE=LANG_en -DLOCALE_DESC="\"en\"" -DPKGLIBDIR="\"/usr/local/lib/arj\"" -D_UNIX -O2 -pipe -fPIC -fno-strict-aliasing -ofreebsd8.0/en/rs/arj/arjtypes.o arjtypes.c
+arjtypes.c: In function 'mk_unixtime':
+arjtypes.c:194: warning: passing argument 1 of 'localtime' from incompatible pointer type
+arjtypes.c:206: warning: passing argument 1 of 'gmtime' from incompatible pointer type
+cc -DSFL=4 -c -Ifreebsd8.0 -I./freebsd8.0/en/rs -I. -O2 -pipe -fPIC -fno-strict-aliasing -DLOCALE=LANG_en -DLOCALE_DESC="\"en\"" -DPKGLIBDIR="\"/usr/local/lib/arj\"" -D_UNIX -O2 -pipe -fPIC -fno-strict-aliasing -ofreebsd8.0/en/rs/arj/exe_sear.o exe_sear.c
+cc -DSFL=4 -c -Ifreebsd8.0 -I./freebsd8.0/en/rs -I. -O2 -pipe -fPIC -fno-strict-aliasing -DLOCALE=LANG_en -DLOCALE_DESC="\"en\"" -DPKGLIBDIR="\"/usr/local/lib/arj\"" -D_UNIX -O2 -pipe -fPIC -fno-strict-aliasing -ofreebsd8.0/en/rs/arj/chk_fmsg.o chk_fmsg.c
+cc -DSFL=4 -c -Ifreebsd8.0 -I./freebsd8.0/en/rs -I. -O2 -pipe -fPIC -fno-strict-aliasing -DLOCALE=LANG_en -DLOCALE_DESC="\"en\"" -DPKGLIBDIR="\"/usr/local/lib/arj\"" -D_UNIX -O2 -pipe -fPIC -fno-strict-aliasing -ofreebsd8.0/en/rs/arj/filelist.o filelist.c
+cc -DSFL=4 -c -Ifreebsd8.0 -I./freebsd8.0/en/rs -I. -O2 -pipe -fPIC -fno-strict-aliasing -DLOCALE=LANG_en -DLOCALE_DESC="\"en\"" -DPKGLIBDIR="\"/usr/local/lib/arj\"" -D_UNIX -O2 -pipe -fPIC -fno-strict-aliasing -ofreebsd8.0/en/rs/arj/arjsec_h.o arjsec_h.c
+cc -DSFL=4 -c -Ifreebsd8.0 -I./freebsd8.0/en/rs -I. -O2 -pipe -fPIC -fno-strict-aliasing -DLOCALE=LANG_en -DLOCALE_DESC="\"en\"" -DPKGLIBDIR="\"/usr/local/lib/arj\"" -D_UNIX -O2 -pipe -fPIC -fno-strict-aliasing -ofreebsd8.0/en/rs/arj/arjsec_l.o arjsec_l.c
+cc -DSFL=4 -c -Ifreebsd8.0 -I./freebsd8.0/en/rs -I. -O2 -pipe -fPIC -fno-strict-aliasing -DLOCALE=LANG_en -DLOCALE_DESC="\"en\"" -DPKGLIBDIR="\"/usr/local/lib/arj\"" -D_UNIX -O2 -pipe -fPIC -fno-strict-aliasing -ofreebsd8.0/en/rs/arj/garble.o garble.c
+cc -DSFL=4 -c -Ifreebsd8.0 -I./freebsd8.0/en/rs -I. -O2 -pipe -fPIC -fno-strict-aliasing -DLOCALE=LANG_en -DLOCALE_DESC="\"en\"" -DPKGLIBDIR="\"/usr/local/lib/arj\"" -D_UNIX -O2 -pipe -fPIC -fno-strict-aliasing -ofreebsd8.0/en/rs/arj/scrnio.o scrnio.c
+cc -DSFL=4 -c -Ifreebsd8.0 -I./freebsd8.0/en/rs -I. -O2 -pipe -fPIC -fno-strict-aliasing -DLOCALE=LANG_en -DLOCALE_DESC="\"en\"" -DPKGLIBDIR="\"/usr/local/lib/arj\"" -D_UNIX -O2 -pipe -fPIC -fno-strict-aliasing -ofreebsd8.0/en/rs/arj/ansi.o ansi.c
+cc -DSFL=4 -c -Ifreebsd8.0 -I./freebsd8.0/en/rs -I. -O2 -pipe -fPIC -fno-strict-aliasing -DLOCALE=LANG_en -DLOCALE_DESC="\"en\"" -DPKGLIBDIR="\"/usr/local/lib/arj\"" -D_UNIX -O2 -pipe -fPIC -fno-strict-aliasing -ofreebsd8.0/en/rs/arj/crc16tab.o crc16tab.c
+cc -DSFL=4 -c -Ifreebsd8.0 -I./freebsd8.0/en/rs -I. -O2 -pipe -fPIC -fno-strict-aliasing -DLOCALE=LANG_en -DLOCALE_DESC="\"en\"" -DPKGLIBDIR="\"/usr/local/lib/arj\"" -D_UNIX -O2 -pipe -fPIC -fno-strict-aliasing -ofreebsd8.0/en/rs/arj/recovery.o recovery.c
+cc -DSFL=4 -c -Ifreebsd8.0 -I./freebsd8.0/en/rs -I. -O2 -pipe -fPIC -fno-strict-aliasing -DLOCALE=LANG_en -DLOCALE_DESC="\"en\"" -DPKGLIBDIR="\"/usr/local/lib/arj\"" -D_UNIX -O2 -pipe -fPIC -fno-strict-aliasing -ofreebsd8.0/en/rs/arj/gost.o gost.c
+cc -DSFL=4 -c -Ifreebsd8.0 -I./freebsd8.0/en/rs -I. -O2 -pipe -fPIC -fno-strict-aliasing -DLOCALE=LANG_en -DLOCALE_DESC="\"en\"" -DPKGLIBDIR="\"/usr/local/lib/arj\"" -D_UNIX -O2 -pipe -fPIC -fno-strict-aliasing -ofreebsd8.0/en/rs/arj/gost40.o gost40.c
+cc -DSFL=4 -c -Ifreebsd8.0 -I./freebsd8.0/en/rs -I. -O2 -pipe -fPIC -fno-strict-aliasing -DLOCALE=LANG_en -DLOCALE_DESC="\"en\"" -DPKGLIBDIR="\"/usr/local/lib/arj\"" -D_UNIX -O2 -pipe -fPIC -fno-strict-aliasing -ofreebsd8.0/en/rs/arj/gost_t.o gost_t.c
+cc -DSFL=4 -c -Ifreebsd8.0 -I./freebsd8.0/en/rs -I. -O2 -pipe -fPIC -fno-strict-aliasing -DLOCALE=LANG_en -DLOCALE_DESC="\"en\"" -DPKGLIBDIR="\"/usr/local/lib/arj\"" -D_UNIX -O2 -pipe -fPIC -fno-strict-aliasing -ofreebsd8.0/en/rs/arj/externs.o externs.c
+cc -DARJUTIL -c -Ifreebsd8.0 -I./freebsd8.0/en/rs -I. -O2 -pipe -fPIC -fno-strict-aliasing -DLOCALE=LANG_en -DLOCALE_DESC="\"en\"" -DPKGLIBDIR="\"/usr/local/lib/arj\"" -D_UNIX -O2 -pipe -fPIC -fno-strict-aliasing -ofreebsd8.0/en/rs/tools/join.o join.c
+cc -DLOCALE=LANG_en -DLOCALE_DESC="\"en\"" -DPKGLIBDIR="\"/usr/local/lib/arj\"" -D_UNIX -O2 -pipe -fPIC -fno-strict-aliasing -s gnu/stripgcc.lnk -o freebsd8.0/en/rs/tools/join ./freebsd8.0/en/rs/tools/filemode.o ./freebsd8.0/en/rs/tools/join.o 
+cc -DARJUTIL -c -Ifreebsd8.0 -I./freebsd8.0/en/rs -I. -O2 -pipe -fPIC -fno-strict-aliasing -DLOCALE=LANG_en -DLOCALE_DESC="\"en\"" -DPKGLIBDIR="\"/usr/local/lib/arj\"" -D_UNIX -O2 -pipe -fPIC -fno-strict-aliasing -ofreebsd8.0/en/rs/tools/postproc.o postproc.c
+cc -DLOCALE=LANG_en -DLOCALE_DESC="\"en\"" -DPKGLIBDIR="\"/usr/local/lib/arj\"" -D_UNIX -O2 -pipe -fPIC -fno-strict-aliasing -s gnu/stripgcc.lnk -o freebsd8.0/en/rs/tools/postproc ./freebsd8.0/en/rs/tools/filemode.o ./freebsd8.0/en/rs/tools/postproc.o ./freebsd8.0/en/rs/tools/crc32.o 
+./freebsd8.0/en/rs/tools/msgbind ./resource/resource.txt msg_stb UNIX s en ./freebsd8.0/en/rs
+MSGBIND v 1.65  [14/12/2002]  Not a part of any binary package!
+
+cc -c -Ifreebsd8.0 -I./freebsd8.0/en/rs -I. -O2 -pipe -fPIC -fno-strict-aliasing -DLOCALE=LANG_en -DLOCALE_DESC="\"en\"" -DPKGLIBDIR="\"/usr/local/lib/arj\"" -D_UNIX -O2 -pipe -fPIC -fno-strict-aliasing -ofreebsd8.0/en/rs/sfxstub/nmsg_stb.o freebsd8.0/en/rs/nmsg_stb.c
+cc -DSFXSTUB -c -Ifreebsd8.0 -I./freebsd8.0/en/rs -I. -O2 -pipe -fPIC -fno-strict-aliasing -DLOCALE=LANG_en -DLOCALE_DESC="\"en\"" -DPKGLIBDIR="\"/usr/local/lib/arj\"" -D_UNIX -O2 -pipe -fPIC -fno-strict-aliasing -ofreebsd8.0/en/rs/sfxstub/sfxstub.o sfxstub.c
+cc -DLOCALE=LANG_en -DLOCALE_DESC="\"en\"" -DPKGLIBDIR="\"/usr/local/lib/arj\"" -D_UNIX -O2 -pipe -fPIC -fno-strict-aliasing -s gnu/stripgcc.lnk -o freebsd8.0/en/rs/sfxstub/sfxstub ./freebsd8.0/en/rs/sfxstub/nmsg_stb.o ./freebsd8.0/en/rs/sfxstub/sfxstub.o 
+./freebsd8.0/en/rs/tools/postproc freebsd8.0/en/rs/sfxstub/sfxstub -sfx
+POSTPROC v 1.30  [17/01/2003]  Not a part of any binary package!
+
+cc -DSFL=3 -c -Ifreebsd8.0 -I./freebsd8.0/en/rs -I. -O2 -pipe -fPIC -fno-strict-aliasing -DLOCALE=LANG_en -DLOCALE_DESC="\"en\"" -DPKGLIBDIR="\"/usr/local/lib/arj\"" -D_UNIX -O2 -pipe -fPIC -fno-strict-aliasing -ofreebsd8.0/en/rs/arjsfxv/sfx_id.o sfx_id.c
+cc -DSFL=3 -c -Ifreebsd8.0 -I./freebsd8.0/en/rs -I. -O2 -pipe -fPIC -fno-strict-aliasing -DLOCALE=LANG_en -DLOCALE_DESC="\"en\"" -DPKGLIBDIR="\"/usr/local/lib/arj\"" -D_UNIX -O2 -pipe -fPIC -fno-strict-aliasing -ofreebsd8.0/en/rs/arjsfxv/filemode.o filemode.c
+cc -c -Ifreebsd8.0 -I./freebsd8.0/en/rs -I. -O2 -pipe -fPIC -fno-strict-aliasing -DLOCALE=LANG_en -DLOCALE_DESC="\"en\"" -DPKGLIBDIR="\"/usr/local/lib/arj\"" -D_UNIX -O2 -pipe -fPIC -fno-strict-aliasing -ofreebsd8.0/en/rs/arjsfxv/date_sig.o freebsd8.0/en/rs/date_sig.c
+./freebsd8.0/en/rs/tools/msgbind ./resource/resource.txt msg_sfv UNIX s en ./freebsd8.0/en/rs
+MSGBIND v 1.65  [14/12/2002]  Not a part of any binary package!
+
+ARJDATA: unknown tag <@!_">
+ARJDATA: unknown tag <@: display program option\np: match with Pathname       !: execute command option\n">
+cc -c -Ifreebsd8.0 -I./freebsd8.0/en/rs -I. -O2 -pipe -fPIC -fno-strict-aliasing -DLOCALE=LANG_en -DLOCALE_DESC="\"en\"" -DPKGLIBDIR="\"/usr/local/lib/arj\"" -D_UNIX -O2 -pipe -fPIC -fno-strict-aliasing -ofreebsd8.0/en/rs/arjsfxv/fmsg_sfv.o freebsd8.0/en/rs/fmsg_sfv.c
+cc -c -Ifreebsd8.0 -I./freebsd8.0/en/rs -I. -O2 -pipe -fPIC -fno-strict-aliasing -DLOCALE=LANG_en -DLOCALE_DESC="\"en\"" -DPKGLIBDIR="\"/usr/local/lib/arj\"" -D_UNIX -O2 -pipe -fPIC -fno-strict-aliasing -ofreebsd8.0/en/rs/arjsfxv/imsg_sfv.o freebsd8.0/en/rs/imsg_sfv.c
+cc -c -Ifreebsd8.0 -I./freebsd8.0/en/rs -I. -O2 -pipe -fPIC -fno-strict-aliasing -DLOCALE=LANG_en -DLOCALE_DESC="\"en\"" -DPKGLIBDIR="\"/usr/local/lib/arj\"" -D_UNIX -O2 -pipe -fPIC -fno-strict-aliasing -ofreebsd8.0/en/rs/arjsfxv/nmsg_sfv.o freebsd8.0/en/rs/nmsg_sfv.c
+cc -DSFL=3 -c -Ifreebsd8.0 -I./freebsd8.0/en/rs -I. -O2 -pipe -fPIC -fno-strict-aliasing -DLOCALE=LANG_en -DLOCALE_DESC="\"en\"" -DPKGLIBDIR="\"/usr/local/lib/arj\"" -D_UNIX -O2 -pipe -fPIC -fno-strict-aliasing -ofreebsd8.0/en/rs/arjsfxv/decode.o decode.c
+cc -DSFL=3 -c -Ifreebsd8.0 -I./freebsd8.0/en/rs -I. -O2 -pipe -fPIC -fno-strict-aliasing -DLOCALE=LANG_en -DLOCALE_DESC="\"en\"" -DPKGLIBDIR="\"/usr/local/lib/arj\"" -D_UNIX -O2 -pipe -fPIC -fno-strict-aliasing -ofreebsd8.0/en/rs/arjsfxv/arjsfx.o arjsfx.c
+cc -DSFL=3 -c -Ifreebsd8.0 -I./freebsd8.0/en/rs -I. -O2 -pipe -fPIC -fno-strict-aliasing -DLOCALE=LANG_en -DLOCALE_DESC="\"en\"" -DPKGLIBDIR="\"/usr/local/lib/arj\"" -D_UNIX -O2 -pipe -fPIC -fno-strict-aliasing -ofreebsd8.0/en/rs/arjsfxv/fardata.o fardata.c
+cc -DSFL=3 -c -Ifreebsd8.0 -I./freebsd8.0/en/rs -I. -O2 -pipe -fPIC -fno-strict-aliasing -DLOCALE=LANG_en -DLOCALE_DESC="\"en\"" -DPKGLIBDIR="\"/usr/local/lib/arj\"" -D_UNIX -O2 -pipe -fPIC -fno-strict-aliasing -ofreebsd8.0/en/rs/arjsfxv/arj_user.o arj_user.c
+cc -DSFL=3 -c -Ifreebsd8.0 -I./freebsd8.0/en/rs -I. -O2 -pipe -fPIC -fno-strict-aliasing -DLOCALE=LANG_en -DLOCALE_DESC="\"en\"" -DPKGLIBDIR="\"/usr/local/lib/arj\"" -D_UNIX -O2 -pipe -fPIC -fno-strict-aliasing -ofreebsd8.0/en/rs/arjsfxv/arj_arcv.o arj_arcv.c
+cc -DSFL=3 -c -Ifreebsd8.0 -I./freebsd8.0/en/rs -I. -O2 -pipe -fPIC -fno-strict-aliasing -DLOCALE=LANG_en -DLOCALE_DESC="\"en\"" -DPKGLIBDIR="\"/usr/local/lib/arj\"" -D_UNIX -O2 -pipe -fPIC -fno-strict-aliasing -ofreebsd8.0/en/rs/arjsfxv/arj_file.o arj_file.c
+cc -DSFL=3 -c -Ifreebsd8.0 -I./freebsd8.0/en/rs -I. -O2 -pipe -fPIC -fno-strict-aliasing -DLOCALE=LANG_en -DLOCALE_DESC="\"en\"" -DPKGLIBDIR="\"/usr/local/lib/arj\"" -D_UNIX -O2 -pipe -fPIC -fno-strict-aliasing -ofreebsd8.0/en/rs/arjsfxv/crc32.o crc32.c
+cc -DSFL=3 -c -Ifreebsd8.0 -I./freebsd8.0/en/rs -I. -O2 -pipe -fPIC -fno-strict-aliasing -DLOCALE=LANG_en -DLOCALE_DESC="\"en\"" -DPKGLIBDIR="\"/usr/local/lib/arj\"" -D_UNIX -O2 -pipe -fPIC -fno-strict-aliasing -ofreebsd8.0/en/rs/arjsfxv/misc.o misc.c
+cc -DSFL=3 -c -Ifreebsd8.0 -I./freebsd8.0/en/rs -I. -O2 -pipe -fPIC -fno-strict-aliasing -DLOCALE=LANG_en -DLOCALE_DESC="\"en\"" -DPKGLIBDIR="\"/usr/local/lib/arj\"" -D_UNIX -O2 -pipe -fPIC -fno-strict-aliasing -ofreebsd8.0/en/rs/arjsfxv/debug.o debug.c
+cc -DSFL=3 -c -Ifreebsd8.0 -I./freebsd8.0/en/rs -I. -O2 -pipe -fPIC -fno-strict-aliasing -DLOCALE=LANG_en -DLOCALE_DESC="\"en\"" -DPKGLIBDIR="\"/usr/local/lib/arj\"" -D_UNIX -O2 -pipe -fPIC -fno-strict-aliasing -ofreebsd8.0/en/rs/arjsfxv/arj_proc.o arj_proc.c
+cc -DSFL=3 -c -Ifreebsd8.0 -I./freebsd8.0/en/rs -I. -O2 -pipe -fPIC -fno-strict-aliasing -DLOCALE=LANG_en -DLOCALE_DESC="\"en\"" -DPKGLIBDIR="\"/usr/local/lib/arj\"" -D_UNIX -O2 -pipe -fPIC -fno-strict-aliasing -ofreebsd8.0/en/rs/arjsfxv/environ.o environ.c
+cc -DSFL=3 -c -Ifreebsd8.0 -I./freebsd8.0/en/rs -I. -O2 -pipe -fPIC -fno-strict-aliasing -DLOCALE=LANG_en -DLOCALE_DESC="\"en\"" -DPKGLIBDIR="\"/usr/local/lib/arj\"" -D_UNIX -O2 -pipe -fPIC -fno-strict-aliasing -ofreebsd8.0/en/rs/arjsfxv/ea_mgr.o ea_mgr.c
+cc -DSFL=3 -c -Ifreebsd8.0 -I./freebsd8.0/en/rs -I. -O2 -pipe -fPIC -fno-strict-aliasing -DLOCALE=LANG_en -DLOCALE_DESC="\"en\"" -DPKGLIBDIR="\"/usr/local/lib/arj\"" -D_UNIX -O2 -pipe -fPIC -fno-strict-aliasing -ofreebsd8.0/en/rs/arjsfxv/ntstream.o ntstream.c
+cc -DSFL=3 -c -Ifreebsd8.0 -I./freebsd8.0/en/rs -I. -O2 -pipe -fPIC -fno-strict-aliasing -DLOCALE=LANG_en -DLOCALE_DESC="\"en\"" -DPKGLIBDIR="\"/usr/local/lib/arj\"" -D_UNIX -O2 -pipe -fPIC -fno-strict-aliasing -ofreebsd8.0/en/rs/arjsfxv/uxspec.o uxspec.c
+cc -DSFL=3 -c -Ifreebsd8.0 -I./freebsd8.0/en/rs -I. -O2 -pipe -fPIC -fno-strict-aliasing -DLOCALE=LANG_en -DLOCALE_DESC="\"en\"" -DPKGLIBDIR="\"/usr/local/lib/arj\"" -D_UNIX -O2 -pipe -fPIC -fno-strict-aliasing -ofreebsd8.0/en/rs/arjsfxv/ext_hdr.o ext_hdr.c
+cc -DSFL=3 -c -Ifreebsd8.0 -I./freebsd8.0/en/rs -I. -O2 -pipe -fPIC -fno-strict-aliasing -DLOCALE=LANG_en -DLOCALE_DESC="\"en\"" -DPKGLIBDIR="\"/usr/local/lib/arj\"" -D_UNIX -O2 -pipe -fPIC -fno-strict-aliasing -ofreebsd8.0/en/rs/arjsfxv/arjtypes.o arjtypes.c
+arjtypes.c: In function 'mk_unixtime':
+arjtypes.c:194: warning: passing argument 1 of 'localtime' from incompatible pointer type
+arjtypes.c:206: warning: passing argument 1 of 'gmtime' from incompatible pointer type
+cc -DSFL=3 -c -Ifreebsd8.0 -I./freebsd8.0/en/rs -I. -O2 -pipe -fPIC -fno-strict-aliasing -DLOCALE=LANG_en -DLOCALE_DESC="\"en\"" -DPKGLIBDIR="\"/usr/local/lib/arj\"" -D_UNIX -O2 -pipe -fPIC -fno-strict-aliasing -ofreebsd8.0/en/rs/arjsfxv/exe_sear.o exe_sear.c
+cc -DSFL=3 -c -Ifreebsd8.0 -I./freebsd8.0/en/rs -I. -O2 -pipe -fPIC -fno-strict-aliasing -DLOCALE=LANG_en -DLOCALE_DESC="\"en\"" -DPKGLIBDIR="\"/usr/local/lib/arj\"" -D_UNIX -O2 -pipe -fPIC -fno-strict-aliasing -ofreebsd8.0/en/rs/arjsfxv/chk_fmsg.o chk_fmsg.c
+cc -DSFL=3 -c -Ifreebsd8.0 -I./freebsd8.0/en/rs -I. -O2 -pipe -fPIC -fno-strict-aliasing -DLOCALE=LANG_en -DLOCALE_DESC="\"en\"" -DPKGLIBDIR="\"/usr/local/lib/arj\"" -D_UNIX -O2 -pipe -fPIC -fno-strict-aliasing -ofreebsd8.0/en/rs/arjsfxv/filelist.o filelist.c
+cc -DSFL=3 -c -Ifreebsd8.0 -I./freebsd8.0/en/rs -I. -O2 -pipe -fPIC -fno-strict-aliasing -DLOCALE=LANG_en -DLOCALE_DESC="\"en\"" -DPKGLIBDIR="\"/usr/local/lib/arj\"" -D_UNIX -O2 -pipe -fPIC -fno-strict-aliasing -ofreebsd8.0/en/rs/arjsfxv/arjsec_h.o arjsec_h.c
+cc -DSFL=3 -c -Ifreebsd8.0 -I./freebsd8.0/en/rs -I. -O2 -pipe -fPIC -fno-strict-aliasing -DLOCALE=LANG_en -DLOCALE_DESC="\"en\"" -DPKGLIBDIR="\"/usr/local/lib/arj\"" -D_UNIX -O2 -pipe -fPIC -fno-strict-aliasing -ofreebsd8.0/en/rs/arjsfxv/arjsec_l.o arjsec_l.c
+cc -DSFL=3 -c -Ifreebsd8.0 -I./freebsd8.0/en/rs -I. -O2 -pipe -fPIC -fno-strict-aliasing -DLOCALE=LANG_en -DLOCALE_DESC="\"en\"" -DPKGLIBDIR="\"/usr/local/lib/arj\"" -D_UNIX -O2 -pipe -fPIC -fno-strict-aliasing -ofreebsd8.0/en/rs/arjsfxv/garble.o garble.c
+cc -DSFL=3 -c -Ifreebsd8.0 -I./freebsd8.0/en/rs -I. -O2 -pipe -fPIC -fno-strict-aliasing -DLOCALE=LANG_en -DLOCALE_DESC="\"en\"" -DPKGLIBDIR="\"/usr/local/lib/arj\"" -D_UNIX -O2 -pipe -fPIC -fno-strict-aliasing -ofreebsd8.0/en/rs/arjsfxv/scrnio.o scrnio.c
+cc -DSFL=3 -c -Ifreebsd8.0 -I./freebsd8.0/en/rs -I. -O2 -pipe -fPIC -fno-strict-aliasing -DLOCALE=LANG_en -DLOCALE_DESC="\"en\"" -DPKGLIBDIR="\"/usr/local/lib/arj\"" -D_UNIX -O2 -pipe -fPIC -fno-strict-aliasing -ofreebsd8.0/en/rs/arjsfxv/ansi.o ansi.c
+cc -DSFL=3 -c -Ifreebsd8.0 -I./freebsd8.0/en/rs -I. -O2 -pipe -fPIC -fno-strict-aliasing -DLOCALE=LANG_en -DLOCALE_DESC="\"en\"" -DPKGLIBDIR="\"/usr/local/lib/arj\"" -D_UNIX -O2 -pipe -fPIC -fno-strict-aliasing -ofreebsd8.0/en/rs/arjsfxv/externs.o externs.c
+cc -DLOCALE=LANG_en -DLOCALE_DESC="\"en\"" -DPKGLIBDIR="\"/usr/local/lib/arj\"" -D_UNIX -O2 -pipe -fPIC -fno-strict-aliasing -s gnu/stripgcc.lnk -o freebsd8.0/en/rs/arjsfxv/arjsfxv ./freebsd8.0/en/rs/arjsfxv/sfx_id.o ./freebsd8.0/en/rs/arjsfxv/filemode.o ./freebsd8.0/en/rs/arjsfxv/date_sig.o ./freebsd8.0/en/rs/arjsfxv/fmsg_sfv.o ./freebsd8.0/en/rs/arjsfxv/imsg_sfv.o ./freebsd8.0/en/rs/arjsfxv/nmsg_sfv.o ./freebsd8.0/en/rs/arjsfxv/decode.o ./freebsd8.0/en/rs/arjsfxv/arjsfx.o ./freebsd8.0/en/rs/arjsfxv/fardata.o ./freebsd8.0/en/rs/arjsfxv/arj_user.o ./freebsd8.0/en/rs/arjsfxv/arj_arcv.o ./freebsd8.0/en/rs/arjsfxv/arj_file.o ./freebsd8.0/en/rs/arjsfxv/crc32.o ./freebsd8.0/en/rs/arjsfxv/misc.o ./freebsd8.0/en/rs/arjsfxv/debug.o ./freebsd8.0/en/rs/arjsfxv/arj_proc.o ./freebsd8.0/en/rs/arjsfxv/environ.o ./freebsd8.0/en/rs/arjsfxv/ea_mgr.o ./freebsd8.0/en/rs/arjsfxv/ntstream.o ./freebsd8.0/en/rs/arjsfxv/uxspec.o ./freebsd8.0/en/rs/arjsfxv/ext_hdr.o ./freebsd8.0/en/rs/arjsfxv/arjtypes.o ./freebsd8.0/en/rs/arjsfxv/exe_sear.o ./freebsd8.0/en/rs/arjsfxv/chk_fmsg.o ./freebsd8.0/en/rs/arjsfxv/filelist.o ./freebsd8.0/en/rs/arjsfxv/arjsec_h.o ./freebsd8.0/en/rs/arjsfxv/arjsec_l.o ./freebsd8.0/en/rs/arjsfxv/garble.o ./freebsd8.0/en/rs/arjsfxv/scrnio.o ./freebsd8.0/en/rs/arjsfxv/ansi.o ./freebsd8.0/en/rs/arjsfxv/externs.o  
+./freebsd8.0/en/rs/tools/postproc freebsd8.0/en/rs/arjsfxv/arjsfxv -sfx
+POSTPROC v 1.30  [17/01/2003]  Not a part of any binary package!
+
+cc -DSFL=2 -c -Ifreebsd8.0 -I./freebsd8.0/en/rs -I. -O2 -pipe -fPIC -fno-strict-aliasing -DLOCALE=LANG_en -DLOCALE_DESC="\"en\"" -DPKGLIBDIR="\"/usr/local/lib/arj\"" -D_UNIX -O2 -pipe -fPIC -fno-strict-aliasing -ofreebsd8.0/en/rs/arjsfx/sfx_id.o sfx_id.c
+cc -DSFL=2 -c -Ifreebsd8.0 -I./freebsd8.0/en/rs -I. -O2 -pipe -fPIC -fno-strict-aliasing -DLOCALE=LANG_en -DLOCALE_DESC="\"en\"" -DPKGLIBDIR="\"/usr/local/lib/arj\"" -D_UNIX -O2 -pipe -fPIC -fno-strict-aliasing -ofreebsd8.0/en/rs/arjsfx/filemode.o filemode.c
+./freebsd8.0/en/rs/tools/msgbind ./resource/resource.txt msg_sfx UNIX s en ./freebsd8.0/en/rs
+MSGBIND v 1.65  [14/12/2002]  Not a part of any binary package!
+
+cc -c -Ifreebsd8.0 -I./freebsd8.0/en/rs -I. -O2 -pipe -fPIC -fno-strict-aliasing -DLOCALE=LANG_en -DLOCALE_DESC="\"en\"" -DPKGLIBDIR="\"/usr/local/lib/arj\"" -D_UNIX -O2 -pipe -fPIC -fno-strict-aliasing -ofreebsd8.0/en/rs/arjsfx/fmsg_sfx.o freebsd8.0/en/rs/fmsg_sfx.c
+cc -c -Ifreebsd8.0 -I./freebsd8.0/en/rs -I. -O2 -pipe -fPIC -fno-strict-aliasing -DLOCALE=LANG_en -DLOCALE_DESC="\"en\"" -DPKGLIBDIR="\"/usr/local/lib/arj\"" -D_UNIX -O2 -pipe -fPIC -fno-strict-aliasing -ofreebsd8.0/en/rs/arjsfx/imsg_sfx.o freebsd8.0/en/rs/imsg_sfx.c
+cc -c -Ifreebsd8.0 -I./freebsd8.0/en/rs -I. -O2 -pipe -fPIC -fno-strict-aliasing -DLOCALE=LANG_en -DLOCALE_DESC="\"en\"" -DPKGLIBDIR="\"/usr/local/lib/arj\"" -D_UNIX -O2 -pipe -fPIC -fno-strict-aliasing -ofreebsd8.0/en/rs/arjsfx/nmsg_sfx.o freebsd8.0/en/rs/nmsg_sfx.c
+cc -DSFL=2 -c -Ifreebsd8.0 -I./freebsd8.0/en/rs -I. -O2 -pipe -fPIC -fno-strict-aliasing -DLOCALE=LANG_en -DLOCALE_DESC="\"en\"" -DPKGLIBDIR="\"/usr/local/lib/arj\"" -D_UNIX -O2 -pipe -fPIC -fno-strict-aliasing -ofreebsd8.0/en/rs/arjsfx/decode.o decode.c
+cc -DSFL=2 -c -Ifreebsd8.0 -I./freebsd8.0/en/rs -I. -O2 -pipe -fPIC -fno-strict-aliasing -DLOCALE=LANG_en -DLOCALE_DESC="\"en\"" -DPKGLIBDIR="\"/usr/local/lib/arj\"" -D_UNIX -O2 -pipe -fPIC -fno-strict-aliasing -ofreebsd8.0/en/rs/arjsfx/arjsfx.o arjsfx.c
+cc -DSFL=2 -c -Ifreebsd8.0 -I./freebsd8.0/en/rs -I. -O2 -pipe -fPIC -fno-strict-aliasing -DLOCALE=LANG_en -DLOCALE_DESC="\"en\"" -DPKGLIBDIR="\"/usr/local/lib/arj\"" -D_UNIX -O2 -pipe -fPIC -fno-strict-aliasing -ofreebsd8.0/en/rs/arjsfx/fardata.o fardata.c
+cc -DSFL=2 -c -Ifreebsd8.0 -I./freebsd8.0/en/rs -I. -O2 -pipe -fPIC -fno-strict-aliasing -DLOCALE=LANG_en -DLOCALE_DESC="\"en\"" -DPKGLIBDIR="\"/usr/local/lib/arj\"" -D_UNIX -O2 -pipe -fPIC -fno-strict-aliasing -ofreebsd8.0/en/rs/arjsfx/arj_user.o arj_user.c
+cc -DSFL=2 -c -Ifreebsd8.0 -I./freebsd8.0/en/rs -I. -O2 -pipe -fPIC -fno-strict-aliasing -DLOCALE=LANG_en -DLOCALE_DESC="\"en\"" -DPKGLIBDIR="\"/usr/local/lib/arj\"" -D_UNIX -O2 -pipe -fPIC -fno-strict-aliasing -ofreebsd8.0/en/rs/arjsfx/arj_arcv.o arj_arcv.c
+cc -DSFL=2 -c -Ifreebsd8.0 -I./freebsd8.0/en/rs -I. -O2 -pipe -fPIC -fno-strict-aliasing -DLOCALE=LANG_en -DLOCALE_DESC="\"en\"" -DPKGLIBDIR="\"/usr/local/lib/arj\"" -D_UNIX -O2 -pipe -fPIC -fno-strict-aliasing -ofreebsd8.0/en/rs/arjsfx/arj_file.o arj_file.c
+cc -DSFL=2 -c -Ifreebsd8.0 -I./freebsd8.0/en/rs -I. -O2 -pipe -fPIC -fno-strict-aliasing -DLOCALE=LANG_en -DLOCALE_DESC="\"en\"" -DPKGLIBDIR="\"/usr/local/lib/arj\"" -D_UNIX -O2 -pipe -fPIC -fno-strict-aliasing -ofreebsd8.0/en/rs/arjsfx/crc32.o crc32.c
+cc -DSFL=2 -c -Ifreebsd8.0 -I./freebsd8.0/en/rs -I. -O2 -pipe -fPIC -fno-strict-aliasing -DLOCALE=LANG_en -DLOCALE_DESC="\"en\"" -DPKGLIBDIR="\"/usr/local/lib/arj\"" -D_UNIX -O2 -pipe -fPIC -fno-strict-aliasing -ofreebsd8.0/en/rs/arjsfx/misc.o misc.c
+cc -DSFL=2 -c -Ifreebsd8.0 -I./freebsd8.0/en/rs -I. -O2 -pipe -fPIC -fno-strict-aliasing -DLOCALE=LANG_en -DLOCALE_DESC="\"en\"" -DPKGLIBDIR="\"/usr/local/lib/arj\"" -D_UNIX -O2 -pipe -fPIC -fno-strict-aliasing -ofreebsd8.0/en/rs/arjsfx/debug.o debug.c
+cc -DSFL=2 -c -Ifreebsd8.0 -I./freebsd8.0/en/rs -I. -O2 -pipe -fPIC -fno-strict-aliasing -DLOCALE=LANG_en -DLOCALE_DESC="\"en\"" -DPKGLIBDIR="\"/usr/local/lib/arj\"" -D_UNIX -O2 -pipe -fPIC -fno-strict-aliasing -ofreebsd8.0/en/rs/arjsfx/arj_proc.o arj_proc.c
+cc -DSFL=2 -c -Ifreebsd8.0 -I./freebsd8.0/en/rs -I. -O2 -pipe -fPIC -fno-strict-aliasing -DLOCALE=LANG_en -DLOCALE_DESC="\"en\"" -DPKGLIBDIR="\"/usr/local/lib/arj\"" -D_UNIX -O2 -pipe -fPIC -fno-strict-aliasing -ofreebsd8.0/en/rs/arjsfx/environ.o environ.c
+cc -DSFL=2 -c -Ifreebsd8.0 -I./freebsd8.0/en/rs -I. -O2 -pipe -fPIC -fno-strict-aliasing -DLOCALE=LANG_en -DLOCALE_DESC="\"en\"" -DPKGLIBDIR="\"/usr/local/lib/arj\"" -D_UNIX -O2 -pipe -fPIC -fno-strict-aliasing -ofreebsd8.0/en/rs/arjsfx/arjtypes.o arjtypes.c
+arjtypes.c: In function 'mk_unixtime':
+arjtypes.c:194: warning: passing argument 1 of 'localtime' from incompatible pointer type
+arjtypes.c:206: warning: passing argument 1 of 'gmtime' from incompatible pointer type
+cc -DSFL=2 -c -Ifreebsd8.0 -I./freebsd8.0/en/rs -I. -O2 -pipe -fPIC -fno-strict-aliasing -DLOCALE=LANG_en -DLOCALE_DESC="\"en\"" -DPKGLIBDIR="\"/usr/local/lib/arj\"" -D_UNIX -O2 -pipe -fPIC -fno-strict-aliasing -ofreebsd8.0/en/rs/arjsfx/exe_sear.o exe_sear.c
+cc -DSFL=2 -c -Ifreebsd8.0 -I./freebsd8.0/en/rs -I. -O2 -pipe -fPIC -fno-strict-aliasing -DLOCALE=LANG_en -DLOCALE_DESC="\"en\"" -DPKGLIBDIR="\"/usr/local/lib/arj\"" -D_UNIX -O2 -pipe -fPIC -fno-strict-aliasing -ofreebsd8.0/en/rs/arjsfx/chk_fmsg.o chk_fmsg.c
+cc -DSFL=2 -c -Ifreebsd8.0 -I./freebsd8.0/en/rs -I. -O2 -pipe -fPIC -fno-strict-aliasing -DLOCALE=LANG_en -DLOCALE_DESC="\"en\"" -DPKGLIBDIR="\"/usr/local/lib/arj\"" -D_UNIX -O2 -pipe -fPIC -fno-strict-aliasing -ofreebsd8.0/en/rs/arjsfx/arjsec_h.o arjsec_h.c
+cc -DSFL=2 -c -Ifreebsd8.0 -I./freebsd8.0/en/rs -I. -O2 -pipe -fPIC -fno-strict-aliasing -DLOCALE=LANG_en -DLOCALE_DESC="\"en\"" -DPKGLIBDIR="\"/usr/local/lib/arj\"" -D_UNIX -O2 -pipe -fPIC -fno-strict-aliasing -ofreebsd8.0/en/rs/arjsfx/arjsec_l.o arjsec_l.c
+cc -DSFL=2 -c -Ifreebsd8.0 -I./freebsd8.0/en/rs -I. -O2 -pipe -fPIC -fno-strict-aliasing -DLOCALE=LANG_en -DLOCALE_DESC="\"en\"" -DPKGLIBDIR="\"/usr/local/lib/arj\"" -D_UNIX -O2 -pipe -fPIC -fno-strict-aliasing -ofreebsd8.0/en/rs/arjsfx/garble.o garble.c
+cc -DSFL=2 -c -Ifreebsd8.0 -I./freebsd8.0/en/rs -I. -O2 -pipe -fPIC -fno-strict-aliasing -DLOCALE=LANG_en -DLOCALE_DESC="\"en\"" -DPKGLIBDIR="\"/usr/local/lib/arj\"" -D_UNIX -O2 -pipe -fPIC -fno-strict-aliasing -ofreebsd8.0/en/rs/arjsfx/externs.o externs.c
+cc -DLOCALE=LANG_en -DLOCALE_DESC="\"en\"" -DPKGLIBDIR="\"/usr/local/lib/arj\"" -D_UNIX -O2 -pipe -fPIC -fno-strict-aliasing -s gnu/stripgcc.lnk -o freebsd8.0/en/rs/arjsfx/arjsfx ./freebsd8.0/en/rs/arjsfx/sfx_id.o ./freebsd8.0/en/rs/arjsfx/filemode.o ./freebsd8.0/en/rs/arjsfx/fmsg_sfx.o ./freebsd8.0/en/rs/arjsfx/imsg_sfx.o ./freebsd8.0/en/rs/arjsfx/nmsg_sfx.o ./freebsd8.0/en/rs/arjsfx/decode.o ./freebsd8.0/en/rs/arjsfx/arjsfx.o ./freebsd8.0/en/rs/arjsfx/fardata.o ./freebsd8.0/en/rs/arjsfx/arj_user.o ./freebsd8.0/en/rs/arjsfx/arj_arcv.o ./freebsd8.0/en/rs/arjsfx/arj_file.o ./freebsd8.0/en/rs/arjsfx/crc32.o ./freebsd8.0/en/rs/arjsfx/misc.o ./freebsd8.0/en/rs/arjsfx/debug.o ./freebsd8.0/en/rs/arjsfx/arj_proc.o ./freebsd8.0/en/rs/arjsfx/environ.o ./freebsd8.0/en/rs/arjsfx/arjtypes.o ./freebsd8.0/en/rs/arjsfx/exe_sear.o ./freebsd8.0/en/rs/arjsfx/chk_fmsg.o ./freebsd8.0/en/rs/arjsfx/arjsec_h.o ./freebsd8.0/en/rs/arjsfx/arjsec_l.o ./freebsd8.0/en/rs/arjsfx/garble.o ./freebsd8.0/en/rs/arjsfx/externs.o 
+./freebsd8.0/en/rs/tools/postproc freebsd8.0/en/rs/arjsfx/arjsfx -sfx
+POSTPROC v 1.30  [17/01/2003]  Not a part of any binary package!
+
+cc -DSFL=1 -c -Ifreebsd8.0 -I./freebsd8.0/en/rs -I. -O2 -pipe -fPIC -fno-strict-aliasing -DLOCALE=LANG_en -DLOCALE_DESC="\"en\"" -DPKGLIBDIR="\"/usr/local/lib/arj\"" -D_UNIX -O2 -pipe -fPIC -fno-strict-aliasing -ofreebsd8.0/en/rs/arjsfxjr/sfx_id.o sfx_id.c
+./freebsd8.0/en/rs/tools/msgbind ./resource/resource.txt msg_sfj UNIX s en ./freebsd8.0/en/rs
+MSGBIND v 1.65  [14/12/2002]  Not a part of any binary package!
+
+cc -c -Ifreebsd8.0 -I./freebsd8.0/en/rs -I. -O2 -pipe -fPIC -fno-strict-aliasing -DLOCALE=LANG_en -DLOCALE_DESC="\"en\"" -DPKGLIBDIR="\"/usr/local/lib/arj\"" -D_UNIX -O2 -pipe -fPIC -fno-strict-aliasing -ofreebsd8.0/en/rs/arjsfxjr/fmsg_sfj.o freebsd8.0/en/rs/fmsg_sfj.c
+cc -c -Ifreebsd8.0 -I./freebsd8.0/en/rs -I. -O2 -pipe -fPIC -fno-strict-aliasing -DLOCALE=LANG_en -DLOCALE_DESC="\"en\"" -DPKGLIBDIR="\"/usr/local/lib/arj\"" -D_UNIX -O2 -pipe -fPIC -fno-strict-aliasing -ofreebsd8.0/en/rs/arjsfxjr/nmsg_sfj.o freebsd8.0/en/rs/nmsg_sfj.c
+cc -DSFL=1 -c -Ifreebsd8.0 -I./freebsd8.0/en/rs -I. -O2 -pipe -fPIC -fno-strict-aliasing -DLOCALE=LANG_en -DLOCALE_DESC="\"en\"" -DPKGLIBDIR="\"/usr/local/lib/arj\"" -D_UNIX -O2 -pipe -fPIC -fno-strict-aliasing -ofreebsd8.0/en/rs/arjsfxjr/arjsfxjr.o arjsfxjr.c
+cc -DSFL=1 -c -Ifreebsd8.0 -I./freebsd8.0/en/rs -I. -O2 -pipe -fPIC -fno-strict-aliasing -DLOCALE=LANG_en -DLOCALE_DESC="\"en\"" -DPKGLIBDIR="\"/usr/local/lib/arj\"" -D_UNIX -O2 -pipe -fPIC -fno-strict-aliasing -ofreebsd8.0/en/rs/arjsfxjr/debug.o debug.c
+cc -DSFL=1 -c -Ifreebsd8.0 -I./freebsd8.0/en/rs -I. -O2 -pipe -fPIC -fno-strict-aliasing -DLOCALE=LANG_en -DLOCALE_DESC="\"en\"" -DPKGLIBDIR="\"/usr/local/lib/arj\"" -D_UNIX -O2 -pipe -fPIC -fno-strict-aliasing -ofreebsd8.0/en/rs/arjsfxjr/crc32.o crc32.c
+cc -DSFL=1 -c -Ifreebsd8.0 -I./freebsd8.0/en/rs -I. -O2 -pipe -fPIC -fno-strict-aliasing -DLOCALE=LANG_en -DLOCALE_DESC="\"en\"" -DPKGLIBDIR="\"/usr/local/lib/arj\"" -D_UNIX -O2 -pipe -fPIC -fno-strict-aliasing -ofreebsd8.0/en/rs/arjsfxjr/environ.o environ.c
+cc -DLOCALE=LANG_en -DLOCALE_DESC="\"en\"" -DPKGLIBDIR="\"/usr/local/lib/arj\"" -D_UNIX -O2 -pipe -fPIC -fno-strict-aliasing -s gnu/stripgcc.lnk -o freebsd8.0/en/rs/arjsfxjr/arjsfxjr ./freebsd8.0/en/rs/arjsfxjr/sfx_id.o ./freebsd8.0/en/rs/arjsfxjr/fmsg_sfj.o ./freebsd8.0/en/rs/arjsfxjr/nmsg_sfj.o ./freebsd8.0/en/rs/arjsfxjr/arjsfxjr.o ./freebsd8.0/en/rs/arjsfxjr/debug.o ./freebsd8.0/en/rs/arjsfxjr/crc32.o ./freebsd8.0/en/rs/arjsfxjr/environ.o 
+./freebsd8.0/en/rs/tools/postproc freebsd8.0/en/rs/arjsfxjr/arjsfxjr -sfx
+POSTPROC v 1.30  [17/01/2003]  Not a part of any binary package!
+
+cc -DLOCALE=LANG_en -DLOCALE_DESC="\"en\"" -DPKGLIBDIR="\"/usr/local/lib/arj\"" -D_UNIX -O2 -pipe -fPIC -fno-strict-aliasing -s gnu/stripgcc.lnk -o freebsd8.0/en/rs/arj/arj ./freebsd8.0/en/rs/arj/filemode.o ./freebsd8.0/en/rs/arj/date_sig.o ./freebsd8.0/en/rs/arj/fmsg_arj.o ./freebsd8.0/en/rs/arj/imsg_arj.o ./freebsd8.0/en/rs/arj/nmsg_arj.o ./freebsd8.0/en/rs/arj/integr.o ./freebsd8.0/en/rs/arj/file_reg.o ./freebsd8.0/en/rs/arj/decode.o ./freebsd8.0/en/rs/arj/encode.o ./freebsd8.0/en/rs/arj/arj.o ./freebsd8.0/en/rs/arj/enc_gwy.o ./freebsd8.0/en/rs/arj/fardata.o ./freebsd8.0/en/rs/arj/arj_user.o ./freebsd8.0/en/rs/arj/arj_arcv.o ./freebsd8.0/en/rs/arj/arj_file.o ./freebsd8.0/en/rs/arj/crc32.o ./freebsd8.0/en/rs/arj/misc.o ./freebsd8.0/en/rs/arj/debug.o ./freebsd8.0/en/rs/arj/arj_proc.o ./freebsd8.0/en/rs/arj/environ.o ./freebsd8.0/en/rs/arj/ea_mgr.o ./freebsd8.0/en/rs/arj/uxspec.o ./freebsd8.0/en/rs/arj/ext_hdr.o ./freebsd8.0/en/rs/arj/arjtypes.o ./freebsd8.0/en/rs/arj/exe_sear.o ./freebsd8.0/en/rs/arj/chk_fmsg.o ./freebsd8.0/en/rs/arj/filelist.o ./freebsd8.0/en/rs/arj/arjsec_h.o ./freebsd8.0/en/rs/arj/arjsec_l.o ./freebsd8.0/en/rs/arj/garble.o ./freebsd8.0/en/rs/arj/scrnio.o ./freebsd8.0/en/rs/arj/ansi.o ./freebsd8.0/en/rs/arj/crc16tab.o ./freebsd8.0/en/rs/arj/recovery.o ./freebsd8.0/en/rs/arj/gost.o ./freebsd8.0/en/rs/arj/gost40.o ./freebsd8.0/en/rs/arj/gost_t.o ./freebsd8.0/en/rs/arj/externs.o  
+./freebsd8.0/en/rs/tools/join ./freebsd8.0/en/rs/arj/arj ./freebsd8.0/en/rs/arjsfxjr/arjsfxjr
+JOIN v 1.30  [26/04/2003]  Not a part of any binary package!
+
+Copying . done!
+./freebsd8.0/en/rs/tools/join ./freebsd8.0/en/rs/arj/arj ./freebsd8.0/en/rs/arjsfx/arjsfx
+JOIN v 1.30  [26/04/2003]  Not a part of any binary package!
+
+Copying .. done!
+./freebsd8.0/en/rs/tools/join ./freebsd8.0/en/rs/arj/arj ./freebsd8.0/en/rs/arjsfxv/arjsfxv
+JOIN v 1.30  [26/04/2003]  Not a part of any binary package!
+
+Copying ... done!
+./freebsd8.0/en/rs/tools/join ./freebsd8.0/en/rs/arj/arj ./freebsd8.0/en/rs/sfxstub/sfxstub
+JOIN v 1.30  [26/04/2003]  Not a part of any binary package!
+
+Copying . done!
+rm -f ./freebsd8.0/en/rs/help.arj
+./freebsd8.0/en/rs/arj/arj a ./freebsd8.0/en/rs/help.arj -+ -t1f -2e -e -jm -jh65535 -jt ./resource/en/arj?.txt
+ARJ32 v 3.10, Copyright (c) 1998-2004, ARJ Software Russia. [18 Jan 2010]
+
+Creating archive  : ./freebsd8.0/en/rs/help.arj
+Adding    ./resource/en/arjl.txt              0% 100% 37.2%    
+Adding    ./resource/en/arjs.txt              0% 100% 47.3%    
+Testing arjl.txt                            0% 100%OK        
+Testing arjs.txt                            0% 100%OK        
+     2 file(s)
+./freebsd8.0/en/rs/tools/join ./freebsd8.0/en/rs/arj/arj ./freebsd8.0/en/rs/help.arj
+JOIN v 1.30  [26/04/2003]  Not a part of any binary package!
+
+Copying . done!
+./freebsd8.0/en/rs/tools/postproc freebsd8.0/en/rs/arj/arj
+POSTPROC v 1.30  [17/01/2003]  Not a part of any binary package!
+
+Done
+cc -fPIC -c -Ifreebsd8.0 -I./freebsd8.0/en/rs -I. -O2 -pipe -fPIC -fno-strict-aliasing -DLOCALE=LANG_en -DLOCALE_DESC="\"en\"" -DPKGLIBDIR="\"/usr/local/lib/arj\"" -D_UNIX -O2 -pipe -fPIC -fno-strict-aliasing -ofreebsd8.0/en/rs/arjcrypt/integr.o integr.c
+cc -fPIC -c -Ifreebsd8.0 -I./freebsd8.0/en/rs -I. -O2 -pipe -fPIC -fno-strict-aliasing -DLOCALE=LANG_en -DLOCALE_DESC="\"en\"" -DPKGLIBDIR="\"/usr/local/lib/arj\"" -D_UNIX -O2 -pipe -fPIC -fno-strict-aliasing -ofreebsd8.0/en/rs/arjcrypt/gost.o gost.c
+cc -fPIC -c -Ifreebsd8.0 -I./freebsd8.0/en/rs -I. -O2 -pipe -fPIC -fno-strict-aliasing -DLOCALE=LANG_en -DLOCALE_DESC="\"en\"" -DPKGLIBDIR="\"/usr/local/lib/arj\"" -D_UNIX -O2 -pipe -fPIC -fno-strict-aliasing -ofreebsd8.0/en/rs/arjcrypt/gost_t.o gost_t.c
+./freebsd8.0/en/rs/tools/msgbind ./resource/resource.txt msg_crp UNIX s en ./freebsd8.0/en/rs
+MSGBIND v 1.65  [14/12/2002]  Not a part of any binary package!
+
+cc -fPIC -c -Ifreebsd8.0 -I./freebsd8.0/en/rs -I. -O2 -pipe -fPIC -fno-strict-aliasing -DLOCALE=LANG_en -DLOCALE_DESC="\"en\"" -DPKGLIBDIR="\"/usr/local/lib/arj\"" -D_UNIX -O2 -pipe -fPIC -fno-strict-aliasing -ofreebsd8.0/en/rs/arjcrypt/nmsg_crp.o freebsd8.0/en/rs/nmsg_crp.c
+cc -fPIC -c -Ifreebsd8.0 -I./freebsd8.0/en/rs -I. -O2 -pipe -fPIC -fno-strict-aliasing -DLOCALE=LANG_en -DLOCALE_DESC="\"en\"" -DPKGLIBDIR="\"/usr/local/lib/arj\"" -D_UNIX -O2 -pipe -fPIC -fno-strict-aliasing -ofreebsd8.0/en/rs/arjcrypt/arjcrypt.o arjcrypt.c
+cc -DLOCALE=LANG_en -DLOCALE_DESC="\"en\"" -DPKGLIBDIR="\"/usr/local/lib/arj\"" -D_UNIX -O2 -pipe -fPIC -fno-strict-aliasing -shared -export-dynamic -s gnu/stripgcc.lnk -o freebsd8.0/en/rs/arjcrypt/arjcrypt.so ./freebsd8.0/en/rs/arjcrypt/integr.o ./freebsd8.0/en/rs/arjcrypt/gost.o ./freebsd8.0/en/rs/arjcrypt/gost_t.o ./freebsd8.0/en/rs/arjcrypt/nmsg_crp.o ./freebsd8.0/en/rs/arjcrypt/arjcrypt.o  
+./freebsd8.0/en/rs/tools/postproc freebsd8.0/en/rs/arjcrypt/arjcrypt.so
+POSTPROC v 1.30  [17/01/2003]  Not a part of any binary package!
+
+Done
+cc -DREARJ -c -Ifreebsd8.0 -I./freebsd8.0/en/rs -I. -O2 -pipe -fPIC -fno-strict-aliasing -DLOCALE=LANG_en -DLOCALE_DESC="\"en\"" -DPKGLIBDIR="\"/usr/local/lib/arj\"" -D_UNIX -O2 -pipe -fPIC -fno-strict-aliasing -ofreebsd8.0/en/rs/rearj/integr.o integr.c
+cc -DREARJ -c -Ifreebsd8.0 -I./freebsd8.0/en/rs -I. -O2 -pipe -fPIC -fno-strict-aliasing -DLOCALE=LANG_en -DLOCALE_DESC="\"en\"" -DPKGLIBDIR="\"/usr/local/lib/arj\"" -D_UNIX -O2 -pipe -fPIC -fno-strict-aliasing -ofreebsd8.0/en/rs/rearj/filemode.o filemode.c
+cc -c -Ifreebsd8.0 -I./freebsd8.0/en/rs -I. -O2 -pipe -fPIC -fno-strict-aliasing -DLOCALE=LANG_en -DLOCALE_DESC="\"en\"" -DPKGLIBDIR="\"/usr/local/lib/arj\"" -D_UNIX -O2 -pipe -fPIC -fno-strict-aliasing -ofreebsd8.0/en/rs/rearj/date_sig.o freebsd8.0/en/rs/date_sig.c
+./freebsd8.0/en/rs/tools/msgbind ./resource/resource.txt msg_rej UNIX s en ./freebsd8.0/en/rs
+MSGBIND v 1.65  [14/12/2002]  Not a part of any binary package!
+
+cc -c -Ifreebsd8.0 -I./freebsd8.0/en/rs -I. -O2 -pipe -fPIC -fno-strict-aliasing -DLOCALE=LANG_en -DLOCALE_DESC="\"en\"" -DPKGLIBDIR="\"/usr/local/lib/arj\"" -D_UNIX -O2 -pipe -fPIC -fno-strict-aliasing -ofreebsd8.0/en/rs/rearj/fmsg_rej.o freebsd8.0/en/rs/fmsg_rej.c
+cc -c -Ifreebsd8.0 -I./freebsd8.0/en/rs -I. -O2 -pipe -fPIC -fno-strict-aliasing -DLOCALE=LANG_en -DLOCALE_DESC="\"en\"" -DPKGLIBDIR="\"/usr/local/lib/arj\"" -D_UNIX -O2 -pipe -fPIC -fno-strict-aliasing -ofreebsd8.0/en/rs/rearj/nmsg_rej.o freebsd8.0/en/rs/nmsg_rej.c
+cc -DREARJ -c -Ifreebsd8.0 -I./freebsd8.0/en/rs -I. -O2 -pipe -fPIC -fno-strict-aliasing -DLOCALE=LANG_en -DLOCALE_DESC="\"en\"" -DPKGLIBDIR="\"/usr/local/lib/arj\"" -D_UNIX -O2 -pipe -fPIC -fno-strict-aliasing -ofreebsd8.0/en/rs/rearj/file_reg.o file_reg.c
+cc -DREARJ -c -Ifreebsd8.0 -I./freebsd8.0/en/rs -I. -O2 -pipe -fPIC -fno-strict-aliasing -DLOCALE=LANG_en -DLOCALE_DESC="\"en\"" -DPKGLIBDIR="\"/usr/local/lib/arj\"" -D_UNIX -O2 -pipe -fPIC -fno-strict-aliasing -ofreebsd8.0/en/rs/rearj/rearj.o rearj.c
+cc -DREARJ -c -Ifreebsd8.0 -I./freebsd8.0/en/rs -I. -O2 -pipe -fPIC -fno-strict-aliasing -DLOCALE=LANG_en -DLOCALE_DESC="\"en\"" -DPKGLIBDIR="\"/usr/local/lib/arj\"" -D_UNIX -O2 -pipe -fPIC -fno-strict-aliasing -ofreebsd8.0/en/rs/rearj/fardata.o fardata.c
+cc -DREARJ -c -Ifreebsd8.0 -I./freebsd8.0/en/rs -I. -O2 -pipe -fPIC -fno-strict-aliasing -DLOCALE=LANG_en -DLOCALE_DESC="\"en\"" -DPKGLIBDIR="\"/usr/local/lib/arj\"" -D_UNIX -O2 -pipe -fPIC -fno-strict-aliasing -ofreebsd8.0/en/rs/rearj/arj_file.o arj_file.c
+cc -DREARJ -c -Ifreebsd8.0 -I./freebsd8.0/en/rs -I. -O2 -pipe -fPIC -fno-strict-aliasing -DLOCALE=LANG_en -DLOCALE_DESC="\"en\"" -DPKGLIBDIR="\"/usr/local/lib/arj\"" -D_UNIX -O2 -pipe -fPIC -fno-strict-aliasing -ofreebsd8.0/en/rs/rearj/crc32.o crc32.c
+cc -DREARJ -c -Ifreebsd8.0 -I./freebsd8.0/en/rs -I. -O2 -pipe -fPIC -fno-strict-aliasing -DLOCALE=LANG_en -DLOCALE_DESC="\"en\"" -DPKGLIBDIR="\"/usr/local/lib/arj\"" -D_UNIX -O2 -pipe -fPIC -fno-strict-aliasing -ofreebsd8.0/en/rs/rearj/misc.o misc.c
+cc -DREARJ -c -Ifreebsd8.0 -I./freebsd8.0/en/rs -I. -O2 -pipe -fPIC -fno-strict-aliasing -DLOCALE=LANG_en -DLOCALE_DESC="\"en\"" -DPKGLIBDIR="\"/usr/local/lib/arj\"" -D_UNIX -O2 -pipe -fPIC -fno-strict-aliasing -ofreebsd8.0/en/rs/rearj/debug.o debug.c
+cc -DREARJ -c -Ifreebsd8.0 -I./freebsd8.0/en/rs -I. -O2 -pipe -fPIC -fno-strict-aliasing -DLOCALE=LANG_en -DLOCALE_DESC="\"en\"" -DPKGLIBDIR="\"/usr/local/lib/arj\"" -D_UNIX -O2 -pipe -fPIC -fno-strict-aliasing -ofreebsd8.0/en/rs/rearj/arj_proc.o arj_proc.c
+cc -DREARJ -c -Ifreebsd8.0 -I./freebsd8.0/en/rs -I. -O2 -pipe -fPIC -fno-strict-aliasing -DLOCALE=LANG_en -DLOCALE_DESC="\"en\"" -DPKGLIBDIR="\"/usr/local/lib/arj\"" -D_UNIX -O2 -pipe -fPIC -fno-strict-aliasing -ofreebsd8.0/en/rs/rearj/environ.o environ.c
+cc -DREARJ -c -Ifreebsd8.0 -I./freebsd8.0/en/rs -I. -O2 -pipe -fPIC -fno-strict-aliasing -DLOCALE=LANG_en -DLOCALE_DESC="\"en\"" -DPKGLIBDIR="\"/usr/local/lib/arj\"" -D_UNIX -O2 -pipe -fPIC -fno-strict-aliasing -ofreebsd8.0/en/rs/rearj/arjtypes.o arjtypes.c
+arjtypes.c: In function 'mk_unixtime':
+arjtypes.c:194: warning: passing argument 1 of 'localtime' from incompatible pointer type
+arjtypes.c:206: warning: passing argument 1 of 'gmtime' from incompatible pointer type
+cc -DREARJ -c -Ifreebsd8.0 -I./freebsd8.0/en/rs -I. -O2 -pipe -fPIC -fno-strict-aliasing -DLOCALE=LANG_en -DLOCALE_DESC="\"en\"" -DPKGLIBDIR="\"/usr/local/lib/arj\"" -D_UNIX -O2 -pipe -fPIC -fno-strict-aliasing -ofreebsd8.0/en/rs/rearj/filelist.o filelist.c
+cc -DREARJ -c -Ifreebsd8.0 -I./freebsd8.0/en/rs -I. -O2 -pipe -fPIC -fno-strict-aliasing -DLOCALE=LANG_en -DLOCALE_DESC="\"en\"" -DPKGLIBDIR="\"/usr/local/lib/arj\"" -D_UNIX -O2 -pipe -fPIC -fno-strict-aliasing -ofreebsd8.0/en/rs/rearj/scrnio.o scrnio.c
+cc -DREARJ -c -Ifreebsd8.0 -I./freebsd8.0/en/rs -I. -O2 -pipe -fPIC -fno-strict-aliasing -DLOCALE=LANG_en -DLOCALE_DESC="\"en\"" -DPKGLIBDIR="\"/usr/local/lib/arj\"" -D_UNIX -O2 -pipe -fPIC -fno-strict-aliasing -ofreebsd8.0/en/rs/rearj/arjsec_h.o arjsec_h.c
+cc -DREARJ -c -Ifreebsd8.0 -I./freebsd8.0/en/rs -I. -O2 -pipe -fPIC -fno-strict-aliasing -DLOCALE=LANG_en -DLOCALE_DESC="\"en\"" -DPKGLIBDIR="\"/usr/local/lib/arj\"" -D_UNIX -O2 -pipe -fPIC -fno-strict-aliasing -ofreebsd8.0/en/rs/rearj/arjsec_l.o arjsec_l.c
+cc -DREARJ -c -Ifreebsd8.0 -I./freebsd8.0/en/rs -I. -O2 -pipe -fPIC -fno-strict-aliasing -DLOCALE=LANG_en -DLOCALE_DESC="\"en\"" -DPKGLIBDIR="\"/usr/local/lib/arj\"" -D_UNIX -O2 -pipe -fPIC -fno-strict-aliasing -ofreebsd8.0/en/rs/rearj/externs.o externs.c
+cc -DLOCALE=LANG_en -DLOCALE_DESC="\"en\"" -DPKGLIBDIR="\"/usr/local/lib/arj\"" -D_UNIX -O2 -pipe -fPIC -fno-strict-aliasing -s gnu/stripgcc.lnk -o freebsd8.0/en/rs/rearj/rearj ./freebsd8.0/en/rs/rearj/integr.o ./freebsd8.0/en/rs/rearj/filemode.o ./freebsd8.0/en/rs/rearj/date_sig.o ./freebsd8.0/en/rs/rearj/fmsg_rej.o ./freebsd8.0/en/rs/rearj/nmsg_rej.o ./freebsd8.0/en/rs/rearj/file_reg.o ./freebsd8.0/en/rs/rearj/rearj.o ./freebsd8.0/en/rs/rearj/fardata.o ./freebsd8.0/en/rs/rearj/arj_file.o ./freebsd8.0/en/rs/rearj/crc32.o ./freebsd8.0/en/rs/rearj/misc.o ./freebsd8.0/en/rs/rearj/debug.o ./freebsd8.0/en/rs/rearj/arj_proc.o ./freebsd8.0/en/rs/rearj/environ.o ./freebsd8.0/en/rs/rearj/arjtypes.o ./freebsd8.0/en/rs/rearj/filelist.o ./freebsd8.0/en/rs/rearj/scrnio.o ./freebsd8.0/en/rs/rearj/arjsec_h.o ./freebsd8.0/en/rs/rearj/arjsec_l.o ./freebsd8.0/en/rs/rearj/externs.o 
+./freebsd8.0/en/rs/tools/postproc freebsd8.0/en/rs/rearj/rearj
+POSTPROC v 1.30  [17/01/2003]  Not a part of any binary package!
+
+Done
+cc -DREGISTER -c -Ifreebsd8.0 -I./freebsd8.0/en/rs -I. -O2 -pipe -fPIC -fno-strict-aliasing -DLOCALE=LANG_en -DLOCALE_DESC="\"en\"" -DPKGLIBDIR="\"/usr/local/lib/arj\"" -D_UNIX -O2 -pipe -fPIC -fno-strict-aliasing -ofreebsd8.0/en/rs/register/filemode.o filemode.c
+cc -DREGISTER -c -Ifreebsd8.0 -I./freebsd8.0/en/rs -I. -O2 -pipe -fPIC -fno-strict-aliasing -DLOCALE=LANG_en -DLOCALE_DESC="\"en\"" -DPKGLIBDIR="\"/usr/local/lib/arj\"" -D_UNIX -O2 -pipe -fPIC -fno-strict-aliasing -ofreebsd8.0/en/rs/register/integr.o integr.c
+./freebsd8.0/en/rs/tools/msgbind ./resource/resource.txt msg_reg UNIX s en ./freebsd8.0/en/rs
+MSGBIND v 1.65  [14/12/2002]  Not a part of any binary package!
+
+cc -c -Ifreebsd8.0 -I./freebsd8.0/en/rs -I. -O2 -pipe -fPIC -fno-strict-aliasing -DLOCALE=LANG_en -DLOCALE_DESC="\"en\"" -DPKGLIBDIR="\"/usr/local/lib/arj\"" -D_UNIX -O2 -pipe -fPIC -fno-strict-aliasing -ofreebsd8.0/en/rs/register/fmsg_reg.o freebsd8.0/en/rs/fmsg_reg.c
+cc -c -Ifreebsd8.0 -I./freebsd8.0/en/rs -I. -O2 -pipe -fPIC -fno-strict-aliasing -DLOCALE=LANG_en -DLOCALE_DESC="\"en\"" -DPKGLIBDIR="\"/usr/local/lib/arj\"" -D_UNIX -O2 -pipe -fPIC -fno-strict-aliasing -ofreebsd8.0/en/rs/register/nmsg_reg.o freebsd8.0/en/rs/nmsg_reg.c
+cc -DREGISTER -c -Ifreebsd8.0 -I./freebsd8.0/en/rs -I. -O2 -pipe -fPIC -fno-strict-aliasing -DLOCALE=LANG_en -DLOCALE_DESC="\"en\"" -DPKGLIBDIR="\"/usr/local/lib/arj\"" -D_UNIX -O2 -pipe -fPIC -fno-strict-aliasing -ofreebsd8.0/en/rs/register/register.o register.c
+cc -DREGISTER -c -Ifreebsd8.0 -I./freebsd8.0/en/rs -I. -O2 -pipe -fPIC -fno-strict-aliasing -DLOCALE=LANG_en -DLOCALE_DESC="\"en\"" -DPKGLIBDIR="\"/usr/local/lib/arj\"" -D_UNIX -O2 -pipe -fPIC -fno-strict-aliasing -ofreebsd8.0/en/rs/register/fardata.o fardata.c
+cc -DREGISTER -c -Ifreebsd8.0 -I./freebsd8.0/en/rs -I. -O2 -pipe -fPIC -fno-strict-aliasing -DLOCALE=LANG_en -DLOCALE_DESC="\"en\"" -DPKGLIBDIR="\"/usr/local/lib/arj\"" -D_UNIX -O2 -pipe -fPIC -fno-strict-aliasing -ofreebsd8.0/en/rs/register/crc32.o crc32.c
+cc -DREGISTER -c -Ifreebsd8.0 -I./freebsd8.0/en/rs -I. -O2 -pipe -fPIC -fno-strict-aliasing -DLOCALE=LANG_en -DLOCALE_DESC="\"en\"" -DPKGLIBDIR="\"/usr/local/lib/arj\"" -D_UNIX -O2 -pipe -fPIC -fno-strict-aliasing -ofreebsd8.0/en/rs/register/debug.o debug.c
+cc -DREGISTER -c -Ifreebsd8.0 -I./freebsd8.0/en/rs -I. -O2 -pipe -fPIC -fno-strict-aliasing -DLOCALE=LANG_en -DLOCALE_DESC="\"en\"" -DPKGLIBDIR="\"/usr/local/lib/arj\"" -D_UNIX -O2 -pipe -fPIC -fno-strict-aliasing -ofreebsd8.0/en/rs/register/arj_proc.o arj_proc.c
+cc -DREGISTER -c -Ifreebsd8.0 -I./freebsd8.0/en/rs -I. -O2 -pipe -fPIC -fno-strict-aliasing -DLOCALE=LANG_en -DLOCALE_DESC="\"en\"" -DPKGLIBDIR="\"/usr/local/lib/arj\"" -D_UNIX -O2 -pipe -fPIC -fno-strict-aliasing -ofreebsd8.0/en/rs/register/environ.o environ.c
+cc -DLOCALE=LANG_en -DLOCALE_DESC="\"en\"" -DPKGLIBDIR="\"/usr/local/lib/arj\"" -D_UNIX -O2 -pipe -fPIC -fno-strict-aliasing -s gnu/stripgcc.lnk -o freebsd8.0/en/rs/register/arj-register ./freebsd8.0/en/rs/register/filemode.o ./freebsd8.0/en/rs/register/integr.o ./freebsd8.0/en/rs/register/fmsg_reg.o ./freebsd8.0/en/rs/register/nmsg_reg.o ./freebsd8.0/en/rs/register/register.o ./freebsd8.0/en/rs/register/fardata.o ./freebsd8.0/en/rs/register/crc32.o ./freebsd8.0/en/rs/register/debug.o ./freebsd8.0/en/rs/register/arj_proc.o ./freebsd8.0/en/rs/register/environ.o 
+./freebsd8.0/en/rs/tools/postproc freebsd8.0/en/rs/register/arj-register -sfx
+POSTPROC v 1.30  [17/01/2003]  Not a part of any binary package!
+
+./freebsd8.0/en/rs/tools/msgbind ./resource/resource.txt msg_adi UNIX s en ./freebsd8.0/en/rs
+MSGBIND v 1.65  [14/12/2002]  Not a part of any binary package!
+
+cc -c -Ifreebsd8.0 -I./freebsd8.0/en/rs -I. -O2 -pipe -fPIC -fno-strict-aliasing -DLOCALE=LANG_en -DLOCALE_DESC="\"en\"" -DPKGLIBDIR="\"/usr/local/lib/arj\"" -D_UNIX -O2 -pipe -fPIC -fno-strict-aliasing -ofreebsd8.0/en/rs/arjdisp/nmsg_adi.o freebsd8.0/en/rs/nmsg_adi.c
+cc -DARJDISP -c -Ifreebsd8.0 -I./freebsd8.0/en/rs -I. -O2 -pipe -fPIC -fno-strict-aliasing -DLOCALE=LANG_en -DLOCALE_DESC="\"en\"" -DPKGLIBDIR="\"/usr/local/lib/arj\"" -D_UNIX -O2 -pipe -fPIC -fno-strict-aliasing -ofreebsd8.0/en/rs/arjdisp/arjdisp.o arjdisp.c
+cc -DARJDISP -c -Ifreebsd8.0 -I./freebsd8.0/en/rs -I. -O2 -pipe -fPIC -fno-strict-aliasing -DLOCALE=LANG_en -DLOCALE_DESC="\"en\"" -DPKGLIBDIR="\"/usr/local/lib/arj\"" -D_UNIX -O2 -pipe -fPIC -fno-strict-aliasing -ofreebsd8.0/en/rs/arjdisp/fardata.o fardata.c
+cc -DARJDISP -c -Ifreebsd8.0 -I./freebsd8.0/en/rs -I. -O2 -pipe -fPIC -fno-strict-aliasing -DLOCALE=LANG_en -DLOCALE_DESC="\"en\"" -DPKGLIBDIR="\"/usr/local/lib/arj\"" -D_UNIX -O2 -pipe -fPIC -fno-strict-aliasing -ofreebsd8.0/en/rs/arjdisp/debug.o debug.c
+cc -DARJDISP -c -Ifreebsd8.0 -I./freebsd8.0/en/rs -I. -O2 -pipe -fPIC -fno-strict-aliasing -DLOCALE=LANG_en -DLOCALE_DESC="\"en\"" -DPKGLIBDIR="\"/usr/local/lib/arj\"" -D_UNIX -O2 -pipe -fPIC -fno-strict-aliasing -ofreebsd8.0/en/rs/arjdisp/arj_proc.o arj_proc.c
+cc -DARJDISP -c -Ifreebsd8.0 -I./freebsd8.0/en/rs -I. -O2 -pipe -fPIC -fno-strict-aliasing -DLOCALE=LANG_en -DLOCALE_DESC="\"en\"" -DPKGLIBDIR="\"/usr/local/lib/arj\"" -D_UNIX -O2 -pipe -fPIC -fno-strict-aliasing -ofreebsd8.0/en/rs/arjdisp/environ.o environ.c
+cc -DARJDISP -c -Ifreebsd8.0 -I./freebsd8.0/en/rs -I. -O2 -pipe -fPIC -fno-strict-aliasing -DLOCALE=LANG_en -DLOCALE_DESC="\"en\"" -DPKGLIBDIR="\"/usr/local/lib/arj\"" -D_UNIX -O2 -pipe -fPIC -fno-strict-aliasing -ofreebsd8.0/en/rs/arjdisp/scrnio.o scrnio.c
+cc -DLOCALE=LANG_en -DLOCALE_DESC="\"en\"" -DPKGLIBDIR="\"/usr/local/lib/arj\"" -D_UNIX -O2 -pipe -fPIC -fno-strict-aliasing -s gnu/stripgcc.lnk -o freebsd8.0/en/rs/arjdisp/arjdisp ./freebsd8.0/en/rs/arjdisp/nmsg_adi.o ./freebsd8.0/en/rs/arjdisp/arjdisp.o ./freebsd8.0/en/rs/arjdisp/fardata.o ./freebsd8.0/en/rs/arjdisp/debug.o ./freebsd8.0/en/rs/arjdisp/arj_proc.o ./freebsd8.0/en/rs/arjdisp/environ.o ./freebsd8.0/en/rs/arjdisp/scrnio.o 
+cc -DARJUTIL -c -Ifreebsd8.0 -I./freebsd8.0/en/rs -I. -O2 -pipe -fPIC -fno-strict-aliasing -DLOCALE=LANG_en -DLOCALE_DESC="\"en\"" -DPKGLIBDIR="\"/usr/local/lib/arj\"" -D_UNIX -O2 -pipe -fPIC -fno-strict-aliasing -ofreebsd8.0/en/rs/tools/packager.o packager.c
+cc -DLOCALE=LANG_en -DLOCALE_DESC="\"en\"" -DPKGLIBDIR="\"/usr/local/lib/arj\"" -D_UNIX -O2 -pipe -fPIC -fno-strict-aliasing -s gnu/stripgcc.lnk -o freebsd8.0/en/rs/tools/packager ./freebsd8.0/en/rs/tools/filemode.o ./freebsd8.0/en/rs/tools/packager.o ./freebsd8.0/en/rs/tools/arjdata.o 
+gmake[1]: Leaving directory `/work/a/ports/archivers/arj/work/arj-3.10.22'
+================================================================
+====================<phase 5: make test>====================
+make: don't know how to make regression-test(continuing)
+================================================================
+====================<phase 6: make install>====================
+add_pkg
+===>  Installing for arj-3.10.22_2
+===>   Generating temporary packing list
+===>  Checking if archivers/arj already installed
+mkdir -p ./freebsd8.0/en/rs
+mkdir -p ./freebsd8.0/en/rs/tools
+mkdir -p ./freebsd8.0/en/rs/arjcrypt
+mkdir -p ./freebsd8.0/en/rs/sfxstub
+mkdir -p ./freebsd8.0/en/rs/arjsfxv
+mkdir -p ./freebsd8.0/en/rs/arjsfx
+mkdir -p ./freebsd8.0/en/rs/arjsfxjr
+mkdir -p ./freebsd8.0/en/rs/arj
+mkdir -p ./freebsd8.0/en/rs/rearj
+mkdir -p ./freebsd8.0/en/rs/register
+mkdir -p ./freebsd8.0/en/rs/arjdisp
+./freebsd8.0/en/rs/tools/today en ./freebsd8.0/en/rs
+TODAY v 1.22  [29/10/2000]  Not a part of any binary package!
+
+gmake do-all
+gmake[1]: Entering directory `/work/a/ports/archivers/arj/work/arj-3.10.22'
+./freebsd8.0/en/rs/tools/today en ./freebsd8.0/en/rs
+TODAY v 1.22  [29/10/2000]  Not a part of any binary package!
+
+gmake[1]: Leaving directory `/work/a/ports/archivers/arj/work/arj-3.10.22'
+/usr/bin/install -c -o root -g wheel -d -m 755 /usr/local/bin
+/usr/bin/install -c -o root -g wheel -d -m 755 /usr/local/man/man1
+/usr/bin/install -c -o root -g wheel -d -m 755 /usr/local/lib/arj
+install   -o root -g wheel -m 555 ./freebsd8.0/en/rs/arj/arj /usr/local/bin
+install   -o root -g wheel -m 555 ./freebsd8.0/en/rs/arjcrypt/arjcrypt.so /usr/local/lib/arj
+install   -o root -g wheel -m 555 ./freebsd8.0/en/rs/rearj/rearj /usr/local/bin
+install   -o root -g wheel -m 555 ./freebsd8.0/en/rs/arjdisp/arjdisp /usr/local/bin
+install   -o root -g wheel -m 555 ./freebsd8.0/en/rs/register/arj-register /usr/local/bin
+install  -o root -g wheel -m 444 ./resource/en/*.1 /usr/local/man/man1
+cd /work/a/ports/archivers/arj/work/arj-3.10.22/doc && install  -o root -g wheel -m 444 COPYING debug.txt /usr/local/share/doc/arj
+cd /work/a/ports/archivers/arj/work/arj-3.10.22/resource/en &&  install  -o root -g wheel -m 444 arjl.txt arjs.txt history.txt readme.txt unix.txt /usr/local/share/doc/arj
+===>   Compressing manual pages for arj-3.10.22_2
+===>   Registering installation for arj-3.10.22_2
+================================================================
+====================<phase 7: make package>====================
+===>  Building package for arj-3.10.22_2
+Creating package /tmp/packages/All/arj-3.10.22_2.tbz
+Registering depends:.
+Creating bzip'd tar ball in '/tmp/packages/All/arj-3.10.22_2.tbz'
+Deleting arj-3.10.22_2
+
+=== Checking filesystem state
+Deleting gmake-3.81_3
+Deleting autoconf-2.62
+Deleting autoconf-wrapper-20071109
+Deleting gettext-0.17_1
+Deleting m4-1.4.13,1
+Deleting perl-5.8.9_3
+Removing stale symlinks from /usr/bin...
+    Removing /usr/bin/perl
+    Removing /usr/bin/perl5
+Done.
+Cleaning up /etc/make.conf... Done.
+Cleaning up /etc/manpath.config... Done.
+Deleting libiconv-1.13.1
+
+=== Checking filesystem state after all packages deleted
+================================================================
+build of /usr/ports/archivers/arj ended at Mon Jan 18 12:20:04 UTC 2010
+================================================================
+
+
+LIKELY but not necessary:
+
+- the removal of c_defs.h from project root to allow for concurrent builds
+using GNU and non-GNU environments.
+- clean-up of indiscriminate use of STDOUT and STDERR to enable correct
+operation in embedded mode with "-* -2i..." (CGI).
+- Win32 screen buffer fixes
+- enhance convert_strtime() to handle dots so that, instead of ARJ's
+"YYYYMMDDhhmmss" format, a similar "YYYYMMDDhhmm.ss" format, as known in
+touch, can be used
+
+Post-3.10.23:
+
+- Unicodization of build environment (UTF-8 + reduction into specific
+SBCS codepages inside MSGBIND/ARJDATA/PACKAGER [TBD])
+- Consider expanding the 512-byte FILENAME_MAX in non-16-bit environments
+(Unix-like systems have FILENAME_MAX as large as 4096).
+- Continued uint32_t'ization
+
+- Innotek GCC
+
+- Should we change processing of "-_" to affect wildcards as well?
+  Suppose something.arj contains BigFile.txt:
+  should "arj e -_ something.arj bigfile.txt" pick BigFile.txt out?
+
+
+%NEXTVERSION%
+
+- 2G fix
+- Legacy removal (possible candidates are ARJSFX and medium memory model)
