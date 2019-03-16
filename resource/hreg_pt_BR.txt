@@ -1,0 +1,5 @@
+Uso: REGISTER nome_do_programa OU  REGISTER -arj  OU  REGISTER -arj32
+       -arj    registra todos os programas ARJ para @PLATFORM no diretório
+               atual
+       -arj32  registra todos os programas ARJ32 (fornecido pela ARJ 
+			   Software, Inc.) no diretório atual

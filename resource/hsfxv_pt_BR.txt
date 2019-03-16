@@ -1,0 +1,20 @@
+Comandos:
+e: Extrair arquivos                v: Verbosamente listar conteúdo
+l: Listar conteúdo                 x: eXtrair arquivos com caminho (default)
+t: Testar conteúdo
+
+Switches:
+a: pular verificação de vírus/segurança   r: modo de recuperação
+b: prompt para diretório        s: habilita modo de comartilhamento (novo)
+c: pular check de  time stamp   u: Atualizar arquivos
+d: checar espaço em disco       w: escrever para nome do arquivo
+f: refrescar arquivos existentes  y: considerar Sim para as perguntas
+g: destruncar, com senha        z: considerar Sim para as perguntas
+h: exibe esta tela              a: apendar arquivo,      c: criar dir
+i: sem indicador de progresso   k: checa espaço em disco, m: ok para  extrair
+j: processar arquivo Win95      n: prompt para nome novo, o: sobrescreve arq
+k: pular opções pré-setadas     r: apaga type-ahead, v: ir para próximo volume
+m: sobrescreve readonly         #: inicia instalação no disco N
+n: apenas arquivos Novos        $: extrai label de volume
+o: configura módulo de encriptação    @: exibe opções de programa
+p: combinar caminho (path) do arquivo !: executa opção do programa

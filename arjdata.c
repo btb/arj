@@ -109,12 +109,16 @@ static char *resources[][2]=
   #if TARGET==DOS
    #if LOCALE==LANG_en
     "ARJ version @VERSION Open-Source"
+   #elif LOCALE==LANG_pt_BR
+    "ARJ versao @VERSION Open-Source"
    #elif LOCALE==LANG_ru
     "ARJ, версия @VERSION"
    #endif
   #else
    #if LOCALE==LANG_en
     "ARJ for @PLATFORM, version @VERSION"
+   #elif LOCALE==LANG_pt_BR
+    "ARJ para @PLATFORM, versao @VERSION"
    #elif LOCALE==LANG_ru
     "ARJ для @PLATFORM, версия @VERSION"
    #endif
@@ -176,6 +180,10 @@ void date_fmt(char *dest)
   static char *mon[]={"января", "февраля", "марта", "апреля", "мая", "июня",
                      "июля", "августа", "сентября", "октября", "ноября",
                      "декабря"};
+ #elif LOCALE==LANG_pt_BR
+  static char *mon[]={"Janeiro", "Fevereiro", "Marco", "April", "Maio", "Junho",
+                     "Julho", "Agosto", "Setembro", "Outobro", "Novembro",
+                     "Dezembro"};
  #endif
  time_t cur_unixtime;
  struct tm *stm;
@@ -196,6 +204,8 @@ void date_fmt(char *dest)
    enstr="th";
   sprintf(dest, "%s %d%s, %d", mon[stm->tm_mon], stm->tm_mday, enstr, cur_year());
  #elif LOCALE==LANG_fr
+  sprintf(dest, "%d %s %d", stm->tm_mday, mon[stm->tm_mon], cur_year());
+ #elif LOCALE==LANG_pt_BR
   sprintf(dest, "%d %s %d", stm->tm_mday, mon[stm->tm_mon], cur_year());
  #elif LOCALE==LANG_de
   sprintf(dest, "%d %s %d", stm->tm_mday, mon[stm->tm_mon], cur_year());

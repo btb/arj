@@ -1,0 +1,16 @@
+
+Comandos:
+e: Extrair arquivos                v: Verbosamente listar conteúdo
+l: Listar conteúdo                 x: eXtrair arquivos com caminho (default)
+t: Testar conteúdo
+
+Switches:
+a: exibir comentários ANSI         m: criar diretórios
+b: prompt para diretório           n: somente arquivos Novos
+c: pular check de  time stamp      o: sObrescrever arquivos
+d: exibir opções do programa       p: combinar caminho (path) do arquivo
+f: refrescar arquivos existentes   s: pular verificação de vírus/segurança
+g: destruncar, com senha           u: atualizar arquivos
+i: sem indicador de progresso      w: pular prompt de extração
+j: processar arquivo no  Win95     y: considerar Sim para as perguntas
+k: mensagens longas de extração    !: executar opção do comando

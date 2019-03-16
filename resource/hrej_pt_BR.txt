@@ -1,0 +1,33 @@
+Todos os direitos reservados. Utilitário de conversão para arquivos ARJ
+Uso:  REARJ [opções] <!lista, especificações ou wildnames>
+  Opções: (podem ser colocadas antes ou depois de especificações de arquivos)
+  /+         ignorar variável REARJ_SW 
+  /a[sufixo] converte arquivos dentro arquivos ("*" para todos os formatos)
+  /bcomando  executa comando DOS antes de extrair
+  /ccomando  executa comando DOS nos arquivos extraídos antes de contá-los
+  /d         excluir arquivo ARJ original
+  /e         não exibir erros
+  /f         converter arquivos de disquetes
+  /g         pular criação de arquivo de saída
+  /i[name]   checar integrida do REARJ.EXE
+  /j         pular se o tamanho do arquivo de saída for maior que o original
+  /k         pular timestamping dos arquivos
+  /l[name]   escrever arquivo de logs (o default é REARJ.LOG)
+  /m[date]   selecionar arquivos ARJ antes da data, no formato YYMMDDHHMMSS 
+  /n[date]   selecionar arquivos ARJ na data ou depois, no formato YYMMDDHHMMSS 
+  /o         permitir sobrescrever arquivo alvo existente
+  /p         ignorar nomes longos de arquivos no Windows 95
+  /q         perguntar antes de cada arquivo a converter
+  /r         percorrer subdiretórios recursivamente
+  /s         pular verificação de contagem de arquivos e tamanho total
+  /tsufixo   criar arquivos com o tipo do sufixo
+  /u[bak]    permite atualização de arquivo com backup (default é BAK)
+  /v         executar comando configurado em arquivos extraídos
+  /wdir      associar diretório de trabalho
+  /x[!]file  excluir por nome de arquivo, wildname, ou lista
+  /y[text]   eliminar arquivo de saída e escrever texto no log (modo de testes)
+  /z         simular operação
+Exemplo:  REARJ *.* /r /d    Converte todos os arquivos para formato ARJ, 
+							 pesquisando todos os subdiretórios, excluindo arquivos 
+							 originais
+Configurar a variável de ambiente REARJ: SET REARJ_SW=/l /we:\temp

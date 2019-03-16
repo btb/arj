@@ -1,0 +1,15 @@
+Códigos de erro do log do REARJ:
+ 1 = Arquivo não encontrado
+ 2 = Arquivo não é de tipo configurado
+ 3 = Arquivo alvo já existe 
+ 4 = Sem espaço em disco suficiente
+ 5 = Usuário pulou ou não selecionou a opção de atualização
+ 6 = Erro no comando UNPACK
+ 7 = Erro no comando PACK 
+ 8 = Alvo não suporta diretórios
+ 9 = Contagem de arquivo errada
+10 = Tamanho total errado
+11 = Erro interno no arquivo REARJ 
+12 = Erro ao renomear arquivo
+13 = Erro no comando /v  (virus encontrado?)
+14 = Arquivo de saída é maior

@@ -185,6 +185,12 @@ static void create_cmt(char *dest)
   #else
    "@PRODUCT v @VERSION, (c) 1998-@{y}, ARJ Software Russia. All rights reserved."
   #endif
+ #elif LOCALE==LANG_pt_BR
+  #if TARGET==DOS
+   "ARJ v @VERSION manufacturing refresh por ARJ Software Russia  Todos os direitos reservados"
+  #else
+   "@PRODUCT v @VERSION, (c) 1998-@{y}, ARJ Software Russia. Todos os direitos reservados."
+  #endif
  #elif LOCALE==LANG_de
   #if TARGET==DOS
    "ARJ @VERSION Produktionsauffrischung, ARJ Software Russia  Alle Rechte vorbehalten"
@@ -209,6 +215,8 @@ static void create_cmt(char *dest)
   sprintf(tmp_str, "@{c40}%s@{_}\n",
   #if LOCALE==LANG_en
    "*** For World-wide use and distribution ***"
+  #elif LOCALE==LANG_pt_BR
+   "*** Para uso e distribuicao mundiais***"
   #elif LOCALE==LANG_de
    "*** FÅr weltweiten Einsatz und Vertrieb ***"
   #elif LOCALE==LANG_ru
@@ -223,6 +231,8 @@ static void create_cmt(char *dest)
   "\n"
  #if LOCALE==LANG_en
   "  ARJ is a disk space saving file archiver with many file management functions."
+ #elif LOCALE==LANG_pt_BR
+  "  ARJ pe um arquivador para economia de espaco, com muitas funcoes de gerenciamento de arquivos."
  #elif LOCALE==LANG_de
   "  ARJ archiviert Dateien in Speicherplatz sparende, komprimierte Archive."
  #elif LOCALE==LANG_ru
@@ -241,6 +251,15 @@ static void create_cmt(char *dest)
   "  ARJ self-extractor automatic password prompt for garbled archives.\n"
   "  Option to select files with long filenames within an archive.\n"
   "  Handling of file ownership, UNIX special files, EAs and file access time.\n"
+ #elif LOCALE==LANG_pt_BR
+  "  NOVAS FUNCIONALIDADES DO ARJ INCLUEM:\n"
+  "\n"
+  "  Versoes nativas para sistemas operacionais UNIX-like.\n"
+  "  Suport a arquivamentos com mais 65000 arquivos.\n"
+  "  Opcao para execucao de ARJ self-extractor apos comando de extracao.\n"
+  "  Prompt para senha automaticamente no ARJ self-extractor para arquivos truncados.\n"
+  "  Opcao para selecionas arquivos com nomes longosdentro de um arquivo.\n"
+  "  Manuseio de propriedades de ownership dos arquivos, arquivos especiais do UNIX, EAs e tempode acesso aos arquivos.\n"
  #elif LOCALE==LANG_de
   /* BUGBUG: update this! */
   "  NEUE FUNKTIONEN VON ARJ BEINHALTEN:\n"
@@ -270,6 +289,9 @@ static void create_cmt(char *dest)
  #if LOCALE==LANG_en
   "  This is a self-extracting archive. Run it to extract all files.\n"
   "  The file names in this archive are the same as in ARJ @COUNTERPARTS for DOS.\n"
+ #elif LOCALE==LANG_pt_BR
+  "  Esse e um arquivos self-extracting. Execute-o para extrair todos os arquivos.\n"
+  "  Os nomes dos arquivos dentro desse arquivos sao os mesmos que no ARJ @COUNTERPARTS para DOS.\n"
  #elif LOCALE==LANG_de
   "  Dies ist ein selbst-entpackendes Archiv-'ARJ2G281' zum Entpacken aller Dateien.\n"
   "  Die Dateinamen in diesem Archiv sind die gleichen, wie in ARJ @COUNTERPARTS fÅr DOS.\n"
@@ -282,6 +304,8 @@ static void create_cmt(char *dest)
  out_line(stream,
  #if LOCALE==LANG_en
   "  Please read README.TXT and @PLATFORM_FN.TXT for important update information!\n"
+ #elif LOCALE==LANG_pt_BR
+  "  Por favor, leia o README.TXT e @PLATFORM_FN.TXT para informacoes importantes da atualizacao!\n"
  #elif LOCALE==LANG_de
   "  Bitte die README.TXT fÅr wichtige Informationen zum Update lesen!\n"
  #elif LOCALE==LANG_ru
@@ -319,6 +343,8 @@ int main(int argc, char **argv)
  #endif
  #if LOCALE==LANG_en
   char lang_tag='_';
+ #elif LOCALE==LANG_pt_BR
+  char lang_tag='p';
  #elif LOCALE==LANG_fr
   char lang_tag='f';
  #elif LOCALE==LANG_de
@@ -334,7 +360,7 @@ int main(int argc, char **argv)
  static char cmdline[CMDLINE_MAX], arj_cmds[CMDLINE_MAX];
  char platform_specific[CCHMAXPATH];
 
- printf("PACKAGER v 2.16  [08/05/2016]  ARJ helper tool\n\n");
+ printf("PACKAGER v 2.16a  [05/03/2019]  ARJ helper tool\n\n");
  if(argc<3)
  {
   printf("Usage: PACKAGER <builder directory> <work directory>,\n"
