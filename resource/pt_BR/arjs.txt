@@ -1,0 +1,19 @@
+Lista de comandos e switches mais usados. Digite ARJ -? para mais ajuda.
+
+Uso:     ARJ <comando> [-<sw> [-<sw>...]] <nome do arquivo> [<nomes de arquivos>...]
+Exemplos:  ARJ a -e arquivo, ARJ e arquivo, ARJ l arquivo *.doc
+<Comandos>
+ ac: Adiciona capítulo ao arquivo de capítulos     l: Lista conteúdo do arquivo
+  a: Adiciona arquivos                  m: Move arquivos para o arquivo.ARJ
+  c: Comenta arquivos                   t: Testa integridade do arquivo
+  d: Excluir arquivos do arquivo.ARJ    u: Atualizado arquivos no arquivo.ARJ
+  e: Extrai arquivos                    v: Lista conteúdo de modo 'verboso'
+  f: 'refresca' arquivos                x: eXtrai arquivos com caminho completo
+<Switches>
+  c: pula verificação de data-hora      r: percorre subdiretórios (recursivo)
+  e: Exclui caminhos dos nomes          u: atualiza arquivos (novos e mais novos)
+  f: refresca arquivos existentes       v: habilita múltiplos Volumes
+  g: Criptograma com senha              w: associa diretório de trabalho
+  i: sem indicador de progresso         x: eXclui arquivos selecionados
+  m: com Método 0, 1, 2, 3, 4          y: assume Sim em todas as perguntas
+  n: comente arquivos novos (que não existem)  hk: habil. proteção contra danos ARJ-PROTECT 

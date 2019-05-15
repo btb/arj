@@ -1,0 +1,348 @@
+Exemplos de comandos ARJ:
+
+  Adicionar arquivos sem estrutura de diret.  ARJ a -e archive *.*
+  Adicionar dois arquivos ao arquivo ARJ:     ARJ a archive nome1 nome2
+  Adicionar arquivos com verificação:         ARJ a -jt archive *.*
+  Adicionar arquivos with maximum compression:   ARJ a -jm archive *.*
+  Adicionar vários diretórios de arquivos:       ARJ a archive ... dir1 dir2 dir3
+  Adicionar milhares de arquivos:                ARJ a -hm1 -r archive *.*
+  Adicionar capítulo a um arquivo:            ARJ ac archive c:\dir\*.* -r
+  Comentar somente o header do arquivo:       ARJ c archive -zcmt.fil
+  Converter arquivo padrão para capítulo:     ARJ cc archive
+  Converter arquivo de capítulo para padrão:  ARJ y archive -jb0
+  Excluir o último capítulo de um arquivo:    ARJ dc archive *.*
+  Remove somente os comentários do arquivo:   ARJ c archive -zNUL
+  Extrair arquivos:                           ARJ e archive
+  Extrair mantendo a estrutura de diretórios:   ARJ x archive
+  Extrair arquivos novos sem perguntar:       ARJ e archive -u -y
+  Extrair subdiretório do arquivo:            ARJ e archive subdir\*.* -p1
+  Extrair arquivos para o diretório:          ARJ x archive destdir\ *.*
+  Extrair arquivos para o diretório:            ARJ x archive *.* -htdestdir
+  Extrair arquivos para o diretório com espaço: ARJ x archive "Program Files\ "
+  Extrair arquivos para o diretório com espaço: ARJ x archive "-htProgram Files"
+  Extrair arquivo Win95 para o DOS:           ARJ x archive -hf2
+  Listar arquivos:                            ARJ l archive
+  Mover arquivos para dentro do arquivo ARJ:  ARJ m archive *.doc
+  Mover arquivos de dentro do arquivo ARJ:    ARJ e -d archive *.doc
+  Restaurar arquivos de um arquivo ARJ danificado:   ARJ x archive -jr
+  Testar integridade dos arquivos:            ARJ t archive
+  Testar múltiplos arquivos ARJ:              ARJ t *.ARJ -hr
+  Adicionar arquivos a um arquivo multi-volume:  ARJ a -va a:archive *.*
+  Criar até 999 volumes:                      ARJ a -va a:archive.001
+  Extrair de um arquivo de multi-volumes:     ARJ x -v a:archive
+  Crriar um self-extractor de múltiplos volumes:    ARJ a -va -je a:archive *.*
+  Converter arquivo para self-extractor:      ARJ y -je1 archive
+
+  Fazer Backup do drive C no drive A:
+                       ARJ a A:\backup C:\ -a1 -b2 -r -vvas -wC:\ -js -jt -hk
+  Restaurar backup no drive A para o drive C:       ARJ x A:\backup C:\ -vv -y
+
+Mais informações detalhadas do ARJ:
+
+Uso:  ARJ <comando> [{/|-}<switch>[-|+|<opção>]...] <archive_name>[.ARJ]
+            [<diretório>\] [<!lista>|<caminho>|<wild>...]
+
+        ou
+
+        ARJ @response_filename [ -& | -+ | -g? | -hy | -gsenha ]
+
+<Comandos>
+ ac: Adicionar capítulo a um arquivo     m: Mover arquivos
+ cc: Converter para arquivo capítulo     n: reNomear arquivos
+ dc: Excluir último capítulo doarquivo   o: Ordenar arquivos
+  a: Adicionar arquivos                  p: Imprimir arquivos na saída padrão
+  b: executar comando DOS ou Batch       q: restaurar arquivo ARJ danificado
+  c: Comentar arquivos                   r: Remover caminhos dos arquivos
+  d: Excluir arquivos dentro do arq. ARJ s: Exibir amostra dos arquivos na tela
+  e: Extrair arquivos                    t: Testar integridade do arquivo ARJ
+  f: Refrescar arquivos no arq. ARJ      u: Atualizar arquivos no arq. ARJ
+  g: Criptografar arquivos               v: Listar conteúdo do arquivo(detalhes)
+  i: checar Integridade do ARJ.EXE       w: Onde estão os textos no arquivo
+  j: Juntar vários arquivos ARJ          x: eXtrair arquivos com caminho
+  k: remover arquivos bacKup antigos     y: copiar arquivo com opções novas
+  l: Listar conteúdo do arquivo
+
+
+<Defaults principais>
+  Gravar informação do caminho no arquivo ARJ
+  Gravar nomes longos de arquivos
+  Gravar/restaurar atributos estendidos
+  Gravar/restaurar data e hora de criação e acesso dos arquivos no Win95 e OS/2
+  Gravar data/hora no formato UNIX quando estiver em SO do tipo UNIX
+  Não gravar drive e raiz nas informações do caminho
+  Exibir comentários que sejam sequências ANSI com handler interno
+  Prompt antes de sobrescrever arquivos
+  Usar compressão no método 1
+  Usar modo binário
+  Usar ! como símbolo de lista
+  O comando "ac" é abreviação para "u -u2 -jb"
+  O comando "cc" é abreviação para "y -jb"
+  O comando "dc" é abreviação para "d -jb"
+
+  ARJ usa pág. código OEM por default no Win32. A opção "-hy" configura ARJ
+  para usar cód. página ANSI que é o ambiente gráfico Windows default.
+  Arquivos self-extracting ARJ/Win32 deveriam ser criados com opção "-hy".
+
+  Para garantir compatibilidade com versões anteriores do ARJ, o parâmetro
+  "-2d" parameter deve ser especificado quando criar arquivos no UNIX.
+
+
+<Respostas do usuário>
+  Yes     - sim
+  No      - não
+  Quit    - abortar e sair do ARJ
+  Always  - sempre assumir "sim" para o tipo de pergunta atual
+  Skip    - sempre assumir "não" para o tipo de pergunta atual
+  Global  - sempre assumir "sim" para todas as perguntas, exceto prompt 
+		 para trocas de volumes de disquetes
+  Command - solicita e executa um comando do sistema
+
+
+<Switches>
+  -: desabilita caracter switch          p: faz match, com caminho completo
+  +: inibe o uso de ARJ_SW              p1: faz match de caminho com subdirs
+     +var: define variável de ambiente   q: Pergunta a cada arquivo
+  @: define 1 token por linha de arquivo r: Percorre subdiretórios (recurs.)
+  !: define lista de caracteres (!)      s: seta data-hora para o mais recente
+  &: seta handler de erro critíco batch  s1: grava data-hora original
+  #: seleciona arquivos por número       s2: seta data-hora do arquivo
+  $: adiciona/extrai label do volume     s3: grava as duas data/horas originais
+     $A: adiciona/extrai label para drive A  t: seta tipo de arquivo(default 0)
+  a: permite todo atributo de arquivo     t0: assume tipo de arquivo binário
+ a1: qualquer arquivo, diretórios e       t1: assume tipo de arquivo texto C
+     arquivos especiais UNIC                t1f: força tipo de arquivo texto C
+  b: Faz Backup de arquivos alterados       t1g: seta texto C com gráficos
+ b1: Faz Backup de alterados, reseta bits de arquiv.   u: Atualiza arquivos (novos)
+ b2: apenas reseta bits de arquivamento     u1: Atualiza arquivos (novos + antigos)
+ b3: reseta bits de arquivamento ao restaurar  u2: Atualiza arquivos (novos + diferentes)
+ b4: não restaura bits, reseta arquivo      u3: Atualiza arquivos (novos + CRC não combina)
+ b5: não restaurar atributos de arquivo     v: habilita múltiplos Volumes
+  c: pula checagem de data-hora             v360:  cria volumes de 362000 bytes
+  d: Excluir arquivos adicionados           v50K:  cria volumes de 50000 bytes
+     pede permissão antes de apagar         va:    auto-detecta espaço disponível
+ d1: Exclui sem pedir permissão (mesmo que  vda:\*.*: excluir a:\*.*
+     "arj m")                               ve:    usar nomes alternativos p/ volumes
+ d2: Trunca ao invés de excluir             vi:    inibir teste de troca de disquetes
+  e: Excluir caminhos dos nomes             vr50K: reservar 50000 bytes de espaço
+ e1: Excluir diretório base dos nomes              no primeiro volume
+  f: Refrescar arquivos existentes          vs:    provê prompt de comando
+ f1: Refrescar com arquivos mais antigos    vsCMD: executar CMD antes de cada vol.
+ f2: Refrescar com arquivos diferentes      vv:    beep entre volumes
+ f3: Refrescar com arquivos de CRC não-comb.  vw:    manter arquivos inteiros nos volumes
+  g: Criptografar com senha                  vz:    provê comando sem echo
+     gstew: Criptografar com senha stew     v360,v720,v1200,v1440: abreviação de 
+     g?: prompt para senha                   opções de Volume podem estar em qualquer
+  i: não exibe indicador de progresso       ordem, exceto 's' e 'z' que devem ser as últimas
+ i1: não exibe progresso como gráfico de barras    w: define diretório de trabalho
+ i2: exibe gráf. barras e percentagem       wTMP: usa TMP como diretório de trabalho
+ i3: porcentagem de progresso total         x: eXclui arquivos selecionados
+ i4: barra de progresso total               x*.EXE: exclui arquivos *.EXE 
+ i5: barra e porcentagem de progresso       x!NOMES: exclui arquivos em NOMES
+ i6: pocentagem total e gráfico do arquivo       exclusões múltiplas permitidas
+  k: Manter arquivo .BAK de um ARJ          y: assume Sim para todas as perguntas 
+  l: cria arquivo List_name                    exceto nas trocas de discos de volumes
+     lNAMES.LST: cria NAMES.LST               Use esse switch para modo batch 
+  m: com Método 0, 1, 2, 3, 4               z: provê arquivo de comentários
+     m0: armazena (sem compressão)             zARC.CMT: use ARC.CMT para comentários
+     m1: boa compressãoa (default)             zNUL: use para remover comentários
+     m2: menos memória e compressão        _: converte nomes de arquivos para minúsculas
+     m3: RÁPIDO! menos compressão
+     m4: O MAIS RÁPIDO! o mínimo de compressão
+  n: somente arquivos Novos (que não existem)
+  o: Na data ou após YYYYMMDDHHMMSS
+     o:       hoje
+     o19901225: no dia 25/dez/1990 ou depois 
+ ob: Antes de YYYYMMDDHHMMSS
+     ob:       antes de hoje
+     ob19901225: antes de 25/dez/1990
+ od: não mais antigo que N dias
+     od5: no máximo 5 dias pra trás
+ oa: Depois de  YYYYMMDDHHMMSS (último acesso)
+     oa:       hoje
+     oa19901225: depois de 25/dez/1990
+oab: Antes de YYYYMMDDHHMMSS (último acesso)
+     oab:     antes de hoje
+     oab19901225: antes de 25/dez/1990
+ oc: Depois de YYYYMMDDHHMMSS (criado)
+     oc:       hoje
+     oc19901225: depois de 25/dez/1990
+ocb: Antes de YYYYMMDDHHMMSS
+     ocb:      antes de hoje
+     ocb19901225: before 25/dez/1990
+
+
+<Shifted switches>
+ h#: adiciona data ao nome              hi: exibição detalhada do Index
+h#1: adiciona hora ao nome              hk: cria registro de proteção de dados
+h#2: adiciona DHHMMSS ao nome           hk: Quantidade default p/ dados de recuperação
+     (personalizado: h#{Y,M,D,N,h,m,s})  hk1: Mais dados de recuperação
+     h#YYYY-MMDD: adiciona YYYY-MMDD     hk9: quantidade máxima de dados de recuperação
+ h$: tenta usar nomes longos (Win2000)      Desabilita ARJ-PROTECT quando usado 
+ h2: sinônimo obsoleto para o grupo -2      com o comando "y" 
+     de opções                          hl: retorna para erros de Listfile 
+ ha: ignora atributo de 'apenas  leitura'   hm: aumenta capacidade de lista de arquivos
+ hb: seleciona por tipo ou atributo do arq.  hm!: redireciona -hm arquivo temp
+     a - bit de arquivamento setado          hm! : move temp para a memória XMS
+     b - bit de arquivamento zerado          hm!e:\ : move temp para e:\
+     r - somente leitura                     hn: especifica filespec não-existente
+     s - sistema                             hn####: seta #### como filespec
+     h - oculto                        ho: Só extrai arquivos que combinam
+     d - diretório                     ho1: Só extrai arquivos que não combinam
+     n - arquivo normal, não d,h,r,s,c,l   hq: ignora erros de acesso de arq. 
+												aberto ao adicionar
+     c - label de capítulo                 hq1: ignora erros de abertura ao adicionar
+     l - label de volume                   hq2: ignora erros de accesso e arqui. 
+												não encontrado ao adicionar
+     f - abrev. para n,d,r,s,h          hr: tenta ignorar erros de arquivamento
+     u - arq. expecial UNIX             hs: desabilita compartilhamento de arquivo
+     w - nomes longos de arquivos do win95   ht: seta diretório destino
+     hb: seleciona todos os tipos              htD:\DESTDIR
+     hbsh: seleciona só ocultos e de sistema   hu: permite atualizar arquivos de volumes
+     hbd: seleciona só dirs             hv: checa a versão do ARJ 
+ hc: executa Comando ao iniciar o ARJ   hw: faz scroll ao salvar pesquisa de nome do arquivo
+     hcCLS: executa CLS                hw1: exibe apenas nomes de arquivos combinando
+ he: pula teste do Envelope de segurança    hx: seta as extensões default do arquivo
+he1: seta erro no Envelope de segurança             hx.arj.sdn
+ hf: define apenas nomes de arquivo curtos   hy: seta o ARJ32 para usar cod. paginação ANSI 
+hf1: seta nomes longos nos comentários           seta o ARJ para extrair cod. paginação ANSI 
+     or extract with W95LNAME.nnn           archive
+hf2: usa nomes longos no DOS            hy1: força o ARJ32 a usar cod. paginação OEM 
+hf3: seta nomes longos no comentário    hy2: força o ARJ32 a usar cod. paginação ANSI 
+     usando wildcards de nomes curtos   hz: criar um envelope ARJ-SECURITY 
+hf4: seta todos os arquivos no Windows
+     como nomes longos de arquivos  Windows 
+ hg: especifica módulo de senhas 
+     hgGARBLE.COM: seta GARBLE.COM como
+     nome de módulo de senha
+hg!: especifica o uso de encriptação 40 bits
+
+
+ j#: armazenar só o CRC e não o arquivo  jp: Pausa a cada tela cheia
+j#1: armazenar só a data, tamanho e atributos   jp50: pausa, com tam. página = 50
+j#2: restaura atributos de arquivos      jq: seta parâmetro de string
+j#3: restaura datas de arquivos               jqstring: seta parâmetro para a string
+j#4: restaura atributos e datas de arquivos   jr: Restaura arquivos ARJ quebrados
+ j$: não processar DTA e DTC de arquivo       jr1: Restaura arquivos de um ARJ muito danificado
+ ja: seta comando P para display ANSI      js: Armazena arquivos pelo sufixo
+ja1: inibe a exibição de comentários          default = arj, arc, lzh, pak, rar,
+ jb: seta o procesamento de  backup de capítulos        zip, zoo, j, e uc2.
+jb0: zera o statuso de arquivo de capítulos   js.zoo: armazena só arquivos .zoo 
+jb*: seleciona todos os backups de capítulos  jt: Testa arquivo temporário por CRC
+ jc: sai após contagem de arquivos     jt1: Testa CRC e conteúdo do arquivo
+     jc5: sai depois de 5 arquivos     jt2: Testa só o conteúdo dos arquivos adicionados
+     jc nom1 nom2: sai depois de 2 arquivos  jt3: Testa só o tamanho e data-hora de arquivo
+ jd: garante espaço livre em disco           ju: traduz caminhos no estilo UNIX 
+     e -jd50K: pula arquivo se espaço <50000 jv: assume exibição 'Verbose'
+     l -jd1000: retorna erro se o espaço livre<1000    jv1: seta o modo de listagem 'verbose' especial 
+ je: cria arquivo self-extracting       jw: seta o nome do arquivo de saída
+je1: cria arquivo SFXJR                      jwNEW.FIL: saída para NEW.FIL
+ jf: armazena/usa caminho completo 1specificado  jx: inicia na posição estendida
+jf1: armazena/usa caminho menos o drive            jx10000: inicia na posição 10000
+ jg: [OBSOLETO]                         jy: suprime perguntas, assume "Yes"
+jg1: [OBSOLETO]                           a - pula perguntas para append
+ jh: seta tamanho de buffer Huffman       c - pula perguntas para criar dir.
+     jh65535: seta para 65535 bytes (max) d - pula perguntas para excluir arquivos
+     jh2048: set para  2048 bytes (min)   k - pula perguntas sobre espaço em disco
+ ji: cria arquivo Index                   n - pula prompt para novo nome de arquivo
+     jiINDEX.FIL: cria INDEX.FIL          o - pula perguntas sobre sobrescrita de arquivo
+ jk: Mantém arquivo temporário, se erro   r - apaga todas as digitações antes da pergunta
+ jl: exibe só os filespecs                s - pula pergunta sobre texto escaneado
+ jm: seta modo de compressão Máximo       v - pula pergunta para proceder ao próx. volume
+jm1: seta compressão Máxima mais rápida   y - aceita caracter simples  Y/N/A/Q
+ jn: reiniciar volumes a partir do arquivo fileName    jycny: pula pergunta para criar, e novos nomes
+     jnBIN\X.COM: reiniciar em BIN\X.COM                no modo de entrada de caracter simples
+     jn: obter informação de restart          jz: define arquivo para comentário
+     do arquivo index escrito anteriormente     jzFIL.CMT: usa FIL.CMT para comentários
+ jo: pergunta quando atualizar arquivo          jzNUL: use para remover comentários
+ jo: extrai para nomes de saída únicos
+ jo1: extrai para nomes de saída únicos
+      mantendo a extensão do arquivo
+
+
+ 2a: serializa nomes na extraçã         2i: Ignora os primeiros bytes do arquivo
+ 2b: [UNIX] restringe para dispositivos de bloco     2i512: começa a partir do offset 512
+     2b ou 2b.: somente o dispositivo atual    2k: pula a exibição do 'século' nas datas
+     2b-/usr: todos, menos /usr são      2k1: usa formato de data não-ambígua
+              localizados           
+ 2c: [OS/2, NT] manuseia somente Crit. EAs   2l: [OS/2, NT] trata EAs .LONGNAME EAs como
+ 2d: modo de compatibilidade ARJ/DOS           nomes de arquivo, quando possível
+2d1: (OBSOLETO) compatibilidade de comentários  2o: [UNIX] armazena/restaura propriedade (owner)   
+ 2e: [OS/2, NT] filtra atributos Estendidos    2o1: armaena valores numéricos de UID/GID 
+     2e.*: pack/unpack só EAs de sistema       2o2: same as -2o but saves group as well  
+     2e.ICON?: pack/unpack só os ícones      2p: especifica classe de Prioridade de processo
+     2e: desabilita manuseio de EAs                OS/2, NT: 2p1...2p4                  
+ 2f: desabilita serialização de comentários        Linux, FreeBSD: 2p1...2p41           
+     ao longos dos múltiplos volumes            2r: Reverte ordem de recursão de diretórios
+ 2h: [UNIX] desabilita manuseio de hardlink     2s: [UNIX] preserva propriedades de Symlink 
+2h1: [UNIX] Extrai hardlinks como           2x: [OS/2, NT]: eXclui atributos estendidos
+     symlinks                               2x.ICON?: ignora ícones
+
+
+Definição de variáveis de Ambiente:
+  set ARJ_SW=-jyry -jv -i1
+  set ARJ_SW=c:\arj.cfg
+
+
+ARJ errorlevels:
+
+  0 ->   sucesso
+  1 ->   atenção (arquivo especificado para adicionar não encontrado,
+                  arquivo especificado para listar, extrair, etc., não encontrado,
+                  ou resposta negativa para "OK para proceder ao próximo volume...")
+  2 ->   erro fatal 
+  3 ->   erro de CRC (erro de CRC do header ou do arquivo ou senha incorreta)
+  4 ->   erro no ARJ-SECURITY ou tentativa de atualizar um arquivo ARJ-SECURED 
+  5 ->   disco cheio ou erro de escrita
+  6 ->   impossível abrir arquivo
+  7 ->   erro simples de usuário (parâmetros incorretos)
+  8 ->   sem memória suficiente
+  9 ->   não é um arquivo ARJ 
+ 10 ->   [DOS] erro de memória XMS (leitura ou escrita)
+ 11 ->   cancelado pelo usuário
+ 12 ->   capítulos demais (mais que 250)
+
+  A afirmação IF ERRORLEVEL 0 ...          significa
+  se o errorlevel é IGUAL ou MAIOR QUE 0.
+
+Se os dois primeiros caracteres de um comentário ARJ são "))" em um
+arquivo self-extractor, então o self-extractor vai aceitar a linha
+adicionada como linha de comando.
+
+)) -o
+vai forçar o self-extractor a sobrescrever arquivos existentes.
+
+
+ARJ is a trademark of ARJ Software, Inc.
+OS/2 is a trademark of International Business Machines Corp.
+UNIX is a registered trademark licensed exlusively through X/Open Company Ltd.
+
+
+ARJ IS DEDICATED TO GOD AND TO THE JUNG FAMILY.  John 15:5
+ARJ/2 IS DEDICATED TO THE MEMORIES OF UNITED GROUP INTERNATIONAL.
+
+
+LICENSE POLICY:
+
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 2 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+
+
+The OS/2, Linux and FreeBSD versions were originally conceived and designed
+by:
+
+                      Andrew Belov -- programmer
+              Viatcheslav Odintsov -- head of the testing group.
+
+For more information concerning ARJ, see the accompanying documentation or
+visit the project home page at http://arj.sourceforge.net.
