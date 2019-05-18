@@ -1,4 +1,4 @@
-Esse È um programa de demonstraÁ„o, que mostra uma nova funcionalidade do ARJ 
-que permite um programador construir uma interface do tipo gr·fica em torno do 
-ARJ, DEARJ, ou ARJSFX. Programas de instalaÁ„o usando o ARJ v„o parecer 
+Esse √© um programa de demonstra√ß√£o, que mostra uma nova funcionalidade do ARJ 
+que permite um programador construir uma interface do tipo gr√°fica em torno do 
+ARJ, DEARJ, ou ARJSFX. Programas de instala√ß√£o usando o ARJ v√£o parecer 
 mais profissionais.
