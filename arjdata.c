@@ -242,7 +242,7 @@ char *expand_tags(char *str, int limit)
   {
    if(*(p+1)==TAG_CHAR)
    {
-    strcpy(p, p+1);
+    safe_strcpy(p, p+1);
     p++;
    }
    else if(*(p+1)==TAG_SPECIAL_BEGIN&&(et=strchr(p+3, TAG_SPECIAL_END))!=NULL)
